@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:#1C1F23;background:#FFFFFF}
+a{color:#1A6FC4;text-decoration:none}
+a:hover{color:#124E8F}
+@media (prefers-reduced-motion: reduce){*{animation-duration:1ms !important;transition-duration:1ms !important}}
+</style>
+</helmet>
+
+<dc-import name="SiteNav" active="resources" hint-size="100%,72px"></dc-import>
+<div style="height:72px" aria-hidden="true"></div>
+
+<main data-screen-label="Case Studies">
+
+  <section style="background:#FFFFFF">
+    <div style="max-width:1280px;margin:0 auto;padding:32px 24px 0">
+      <nav aria-label="Breadcrumb">
+        <ol style="list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;font-size:13px;color:#8B939B">
+          <li><a href="Home.dc.html" style="color:#8B939B" style-hover="color:#1A6FC4">Home</a><span aria-hidden="true" style="margin-left:8px">/</span></li>
+          <li><a href="Resources.dc.html" style="color:#8B939B" style-hover="color:#1A6FC4">Resources</a><span aria-hidden="true" style="margin-left:8px">/</span></li>
+          <li aria-current="page" style="color:#1C1F23;font-weight:500">Case Studies</li>
+        </ol>
+      </nav>
+    </div>
+    <div style="max-width:1280px;margin:0 auto;padding:56px 24px 72px">
+      <div style="max-width:760px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#1A6FC4;margin-bottom:20px">Case Studies</div>
+        <h1 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(2.2rem,4vw,3rem);font-weight:600;letter-spacing:-0.01em;line-height:1.12;margin:0 0 24px">Real work. Anonymized by default.</h1>
+        <p style="font-size:1.125rem;line-height:1.6;color:#5B5F66;margin:0">We publish outcomes by role and sector, not by name, unless a client has explicitly approved otherwise.</p>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Case Studies / Template" style="background:#F4F8FC">
+    <div style="max-width:1280px;margin:0 auto;padding:80px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:48px;align-items:start">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#8B939B;margin-bottom:16px">How every case study reads</div>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(1.7rem,2.6vw,2.25rem);font-weight:600;letter-spacing:-0.01em;line-height:1.2;margin:0 0 20px">Situation → Approach → Outcome</h2>
+        <p style="font-size:1.06rem;line-height:1.65;color:#5B5F66;margin:0 0 24px">Each case opens with an anonymized profile — [Role], [Sector] — then walks the same three blocks. Specificity does the persuading; the name stays private. Where a governance decision shaped the work, the approval trail is shown, not described.</p>
+        <p style="font-size:1.06rem;line-height:1.6;color:#1C1F23;margin:0;border-left:3px solid #1A6FC4;padding-left:20px;font-style:italic">"Pull-quotes from the client appear here — role-attributed, never name-attributed."</p>
+      </div>
+      <div style="background:#FFFFFF;border:1px solid #E4E9EF;border-radius:12px;overflow:hidden;box-shadow:0 4px 16px rgba(28,31,35,0.06)">
+        <div style="height:180px">
+          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="case-study-header" shape="rect" placeholder="Documentary photo: hands with an operational tool, no face in frame (Phase 6 prompt #8)" hint-size="100%,180px"></x-import>
+        </div>
+        <div style="padding:28px 32px">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+            <span style="width:40px;height:40px;border-radius:999px;background:#EAF2FB;display:flex;align-items:center;justify-content:center;flex:none">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="7" r="3.5" stroke="#1A6FC4" stroke-width="1.75"></circle><path d="M3.5 17c0-3 2.9-5 6.5-5s6.5 2 6.5 5" stroke="#1A6FC4" stroke-width="1.75" stroke-linecap="round"></path></svg>
+            </span>
+            <div>
+              <div style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600">[Role]</div>
+              <div style="font-size:13px;color:#8B939B">[Sector]</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;align-items:center;gap:12px"><span style="flex:none;width:26px;height:26px;border-radius:999px;background:#EAF2FB;color:#1A6FC4;font-family:'IBM Plex Mono',monospace;font-size:12px;display:flex;align-items:center;justify-content:center">1</span><span style="font-size:14px;font-weight:600">Situation</span><span style="flex:1;border-top:1.5px dashed #E4E9EF"></span></div>
+            <div style="display:flex;align-items:center;gap:12px"><span style="flex:none;width:26px;height:26px;border-radius:999px;background:#EAF2FB;color:#1A6FC4;font-family:'IBM Plex Mono',monospace;font-size:12px;display:flex;align-items:center;justify-content:center">2</span><span style="font-size:14px;font-weight:600">Approach</span><span style="flex:1;border-top:1.5px dashed #E4E9EF"></span></div>
+            <div style="display:flex;align-items:center;gap:12px"><span style="flex:none;width:26px;height:26px;border-radius:999px;background:#EAF2FB;color:#1A6FC4;font-family:'IBM Plex Mono',monospace;font-size:12px;display:flex;align-items:center;justify-content:center">3</span><span style="font-size:14px;font-weight:600">Outcome</span><span style="flex:1;border-top:1.5px dashed #E4E9EF"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Case Studies / Listing" style="background:#FFFFFF">
+    <div style="max-width:1280px;margin:0 auto;padding:88px 24px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px">
+        <div style="border:1.5px dashed #C8D8EC;border-radius:12px;padding:32px;min-height:180px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#8A4A00;background:#F9EFE3;border-radius:999px;padding:4px 12px;margin-bottom:14px">Client Success Story Placeholder</span>
+          <span style="font-size:14px;color:#8B939B">[Role], [Sector] — pending verified data</span>
+        </div>
+        <div style="border:1.5px dashed #C8D8EC;border-radius:12px;padding:32px;min-height:180px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#8A4A00;background:#F9EFE3;border-radius:999px;padding:4px 12px;margin-bottom:14px">Client Success Story Placeholder</span>
+          <span style="font-size:14px;color:#8B939B">[Role], [Sector] — pending verified data</span>
+        </div>
+        <div style="border:1.5px dashed #C8D8EC;border-radius:12px;padding:32px;min-height:180px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#8A4A00;background:#F9EFE3;border-radius:999px;padding:4px 12px;margin-bottom:14px">Client Success Story Placeholder</span>
+          <span style="font-size:14px;color:#8B939B">[Role], [Sector] — pending verified data</span>
+        </div>
+      </div>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8B939B;margin:28px 0 0">No invented outcomes. These slots fill only with real, internally verified engagements.</p>
+    </div>
+  </section>
+
+  <section data-screen-label="Case Studies / CTA" style="background:#124E8F">
+    <div style="max-width:1280px;margin:0 auto;padding:80px 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px">
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(1.7rem,2.6vw,2.25rem);font-weight:600;letter-spacing:-0.01em;line-height:1.2;color:#FFFFFF;margin:0;max-width:640px">Working through a similar challenge?</h2>
+      <a href="Contact.dc.html" style="flex:none;background:#FFFFFF;color:#124E8F;font-size:16px;font-weight:600;padding:16px 30px;border-radius:6px;transition:background 150ms ease" style-hover="background:#EAF2FB;color:#124E8F">Talk to us about it</a>
+    </div>
+  </section>
+
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,480px"></dc-import>
+</x-dc>
+</body>
+</html>

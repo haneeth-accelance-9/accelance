@@ -1,0 +1,130 @@
+/* =========================================================
+   ACCELANCE DESIGN TOKENS — CSS Custom Properties  v1.0
+   Source of truth: Figma reference stack, verified against
+   accelance_logo.png and live accelance.io screenshots.
+   ========================================================= */
+
+:root {
+  /* ---- Color: Azure Blue (primary brand) ---- */
+  --accelance-azure-700: #011224;
+  --accelance-azure-600: #032F52;
+  --accelance-azure-500: #075085;
+  --accelance-azure-400: #0F74BD; /* = logo color, confirmed */
+  --accelance-azure-300: #179AF8;
+  --accelance-azure-200: #8FBEFE;
+  --accelance-azure-100: #D5E4FE;
+  --accelance-azure-50:  #ECF0FE;
+
+  /* ---- Color: Deep Blue (navy) ---- */
+  --accelance-deepblue-700: #010E31;
+  --accelance-deepblue-600: #062667;
+  --accelance-deepblue-500: #1043A8;
+  --accelance-deepblue-400: #1C62EF;
+  --accelance-deepblue-300: #6C8BFA;
+  --accelance-deepblue-200: #A5B4FC;
+  --accelance-deepblue-100: #D9DEFE;
+  --accelance-deepblue-50:  #ECF0FE;
+
+  /* ---- Color: Vivid Green (secondary) ---- */
+  --accelance-green-700: #011F03;
+  --accelance-green-600: #02410A;
+  --accelance-green-500: #066716;
+  --accelance-green-400: #0C8F22;
+  --accelance-green-300: #13BA2F; /* = website headline green, confirmed */
+  --accelance-green-200: #1BE63D;
+  --accelance-green-100: #C1FFC5;
+
+  /* ---- Color: Golden Amber (tertiary) ---- */
+  --accelance-amber-700: #1A0F00;
+  --accelance-amber-600: #3E2902;
+  --accelance-amber-500: #674706;
+  --accelance-amber-400: #93670D;
+  --accelance-amber-300: #C28915;
+  --accelance-amber-200: #F4AD1D;
+  --accelance-amber-100: #FEDCB9;
+
+  /* ---- Color: Charcoal (neutrals) ---- */
+  --accelance-charcoal-700: #101112;
+  --accelance-charcoal-600: #2C2D30;
+  --accelance-charcoal-500: #4C4D51;
+  --accelance-charcoal-400: #6E7075;
+  --accelance-charcoal-300: #92959A;
+  --accelance-charcoal-200: #B9BBBE;
+  --accelance-charcoal-100: #E2E3E4;
+  --accelance-charcoal-50:  #FDFEFF;
+  --accelance-black: #000000;
+  --accelance-white: #FFFFFF;
+
+  /* ---- Semantic color ---- */
+  --accelance-color-brand-primary: var(--accelance-azure-400);
+  --accelance-color-brand-secondary: var(--accelance-green-300);
+  --accelance-color-success: var(--accelance-green-400);   /* proposed */
+  --accelance-color-warning: var(--accelance-amber-300);   /* proposed */
+  /* --accelance-color-danger: UNDEFINED — no red ramp exists in source, flagged as a gap */
+  --accelance-text-primary: var(--accelance-charcoal-600);
+  --accelance-text-secondary: var(--accelance-charcoal-400);
+
+  /* ---- Gradient (brand device) ---- */
+  --accelance-gradient-brand: linear-gradient(135deg, var(--accelance-azure-400) 0%, var(--accelance-green-300) 100%);
+
+  /* ---- Typography ---- */
+  --accelance-font-primary: 'Lexend', sans-serif;
+  --accelance-font-office-fallback: 'Arial', sans-serif;
+
+  --accelance-display-1-size: 76px;   --accelance-display-1-lh: 94px;
+  --accelance-display-2-size: 60px;   --accelance-display-2-lh: 72px;
+  --accelance-heading-1-size: 56px;   --accelance-heading-1-lh: 70px;
+  --accelance-heading-2-size: 48px;   --accelance-heading-2-lh: 60px;
+  --accelance-heading-3-size: 32px;   --accelance-heading-3-lh: 40px;
+  --accelance-section-heading-size: 20px; --accelance-section-heading-lh: 32px;
+  --accelance-subsection-heading-size: 12px; --accelance-subsection-heading-lh: 20px;
+  --accelance-tab-text-size: 24px;    --accelance-tab-text-lh: 36px;
+  --accelance-body-1-size: 20px;      --accelance-body-1-lh: 32px;
+  --accelance-body-2-size: 16px;      --accelance-body-2-lh: 24px;
+  --accelance-body-3-size: 16px;      --accelance-body-3-lh: 24px;
+  --accelance-button-1-size: 20px;    --accelance-button-1-lh: 32px;
+  --accelance-button-2-size: 16px;    --accelance-button-2-lh: 24px;
+
+  /* Mobile overrides — apply within your breakpoint media query */
+  --accelance-display-1-size-mobile: 32px; --accelance-display-1-lh-mobile: 48px;
+  --accelance-display-2-size-mobile: 28px; --accelance-display-2-lh-mobile: 36px;
+  --accelance-heading-1-size-mobile: 28px; --accelance-heading-1-lh-mobile: 36px;
+  --accelance-heading-2-size-mobile: 24px; --accelance-heading-2-lh-mobile: 32px;
+  --accelance-heading-3-size-mobile: 20px; --accelance-heading-3-lh-mobile: 28px;
+  --accelance-body-1-size-mobile: 16px;    --accelance-body-1-lh-mobile: 24px;
+  --accelance-body-2-size-mobile: 12px;    --accelance-body-2-lh-mobile: 20px;
+
+  /* ---- Spacing ---- */
+  --accelance-space-1: 64px; --accelance-space-1-mobile: 32px; /* main sectional */
+  --accelance-space-2: 48px; --accelance-space-2-mobile: 24px; /* section elements */
+  --accelance-space-3: 32px; --accelance-space-3-mobile: 16px; /* sub-section elements */
+  --accelance-space-4: 24px; --accelance-space-4-mobile: 12px; /* heading & para */
+  --accelance-space-5: 16px; --accelance-space-5-mobile: 8px;  /* para spacing */
+  --accelance-space-6: 8px;  --accelance-space-6-mobile: 4px;  /* small spacing */
+
+  /* Padding (cards/boxes/tiles) */
+  --accelance-pad-section: 64px; --accelance-pad-section-mobile: 32px;
+  --accelance-pad-box: 48px;     --accelance-pad-box-mobile: 24px;
+  --accelance-pad-tiles: 32px;   --accelance-pad-tiles-mobile: 16px;
+  --accelance-pad-cards: 24px;   --accelance-pad-cards-mobile: 12px;
+
+  /* Grid */
+  --accelance-grid-desktop-columns: 12;
+  --accelance-grid-desktop-margin: 48px;
+  --accelance-grid-desktop-gutter: 8px;
+  --accelance-grid-tablet-columns: 8;
+  --accelance-grid-tablet-margin: 32px;
+  --accelance-grid-tablet-gutter: 8px;
+  --accelance-grid-mobile-columns: 4;
+  --accelance-grid-mobile-margin: 32px;
+  --accelance-grid-mobile-gutter: 8px;
+
+  /* ---- Shadows ---- */
+  --accelance-shadow-box: 0px 4px 4px 0px rgba(0,0,0,0.25);
+  --accelance-shadow-box-mobile: 0px 2px 2px 0px rgba(0,0,0,0.25);
+  --accelance-shadow-sectional: -5px -1px 15px 0px rgba(0,0,0,0.25);
+
+  /* ---- Radius ---- */
+  --accelance-radius-box: 24px;       --accelance-radius-box-mobile: 16px;
+  --accelance-radius-button: 12px;    --accelance-radius-button-mobile: 8px;
+}

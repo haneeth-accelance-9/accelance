@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#1A6FC4; --blue-deep:#124E8F; --blue-tint:#EAF2FB;
+  --green:#1A7A4A; --amber:#B85400; --teal:#0B7690;
+  --ink:#1C1F23; --body:#5B5F66; --line:#D7DCE1; --surface:#F5F7F9;
+  --r-sm:6px; --r-md:12px; --r-lg:20px;
+}
+*{box-sizing:border-box;}
+body{margin:0;font-family:'Inter',sans-serif;background:#EDEFF2;color:var(--ink);}
+.toolbar{
+  position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line);
+  padding:14px 20px;display:flex;gap:24px;flex-wrap:wrap;align-items:center;font-size:13px;
+}
+.toolbar .group{display:flex;gap:6px;align-items:center;}
+.toolbar label{color:var(--body);font-weight:600;margin-right:4px;}
+.toolbar button{
+  border:1px solid var(--line);background:#fff;padding:7px 14px;border-radius:999px;
+  cursor:pointer;font-size:13px;font-weight:500;color:var(--body);transition:all .15s;
+}
+.toolbar button.active{background:var(--blue);color:#fff;border-color:var(--blue);}
+.stage{padding:36px 12px 60px;display:flex;justify-content:center;overflow-x:auto;}
+.frame-shell{transform-origin:top center;transition:transform .2s;}
+.frame{background:#fff;box-shadow:0 8px 40px rgba(0,0,0,.12);overflow:hidden;}
+.frame.desktop{width:1200px;}
+.frame.tablet{width:820px;}
+.frame.mobile{width:380px;}
+
+/* ---------- WIREFRAME BASE (shared) ---------- */
+.wf-nav{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;border-bottom:1px solid var(--line);}
+.wf-nav .links{display:flex;gap:26px;font-size:14px;}
+.frame.mobile .wf-nav .links{display:none;}
+.wf-crumb{padding:10px 32px 0;font-size:12px;color:var(--body);}
+.wf-section{padding:48px 32px;}
+.frame.mobile .wf-section{padding:28px 20px;}
+.wf-footer{background:var(--surface);padding:36px 32px;display:flex;gap:40px;flex-wrap:wrap;font-size:13px;color:var(--body);border-top:1px solid var(--line);}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.frame.tablet .grid-3,.frame.tablet .grid-4{grid-template-columns:repeat(2,1fr);}
+.frame.mobile .grid-3,.frame.mobile .grid-4{grid-template-columns:1fr;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+.frame.mobile .two-col{grid-template-columns:1fr;gap:20px;}
+
+/* ---------- LO-FI skin ---------- */
+.lofi .wf-nav{border-bottom:1.5px dashed #999;}
+.lofi .logo-box{width:90px;height:20px;background:#ccc;border:1px solid #999;}
+.lofi .links span{color:#777;}
+.lofi .btn{border:1.5px dashed #888;background:#fff;color:#777;padding:9px 16px;border-radius:4px;font-size:13px;display:inline-block;}
+.lofi h1,.lofi h2,.lofi h3{font-family:Inter,sans-serif;color:#444;}
+.lofi .placeholder-block{background:repeating-linear-gradient(45deg,#eee,#eee 6px,#f7f7f7 6px,#f7f7f7 12px);border:1px dashed #aaa;display:flex;align-items:center;justify-content:center;color:#999;font-size:12px;}
+.lofi .lorem{color:#999;font-size:13px;}
+.lofi .lorem-line{height:9px;background:#e2e2e2;border-radius:2px;margin-bottom:8px;}
+.lofi .card{border:1.5px dashed #bbb;padding:18px;border-radius:4px;}
+.lofi .icon-dot{width:28px;height:28px;border-radius:50%;border:1.5px dashed #999;}
+.lofi .tag{border:1px dashed #999;color:#888;font-size:11px;padding:2px 8px;border-radius:3px;}
+
+/* ---------- HI-FI skin ---------- */
+.hifi{font-family:'Inter',sans-serif;}
+.hifi .wf-nav{background:#fff;}
+.hifi .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;color:var(--blue);}
+.hifi .links span{color:var(--ink);font-size:14px;font-weight:500;}
+.hifi .btn-primary{background:var(--blue);color:#fff;padding:10px 20px;border-radius:var(--r-sm);font-size:14px;font-weight:600;border:none;}
+.hifi .btn-secondary{background:#fff;color:var(--blue);border:1.5px solid var(--blue);padding:10px 20px;border-radius:var(--r-sm);font-size:14px;font-weight:600;}
+.hifi h1{font-family:'Space Grotesk',sans-serif;font-size:38px;line-height:1.15;margin:0 0 16px;letter-spacing:-0.5px;}
+.frame.mobile.hifi h1, .hifi.frame.mobile h1{font-size:28px;}
+.hifi h2{font-family:'Space Grotesk',sans-serif;font-size:27px;margin:0 0 12px;}
+.hifi h3{font-family:'Space Grotesk',sans-serif;font-size:18px;margin:0 0 8px;}
+.hifi p{color:var(--body);line-height:1.6;font-size:15px;margin:0 0 20px;}
+.hifi .card{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:22px;}
+.hifi .hero-visual{background:linear-gradient(135deg,var(--blue-tint),#fff);border-radius:var(--r-lg);height:280px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.frame.mobile .hero-visual{height:160px;}
+.hifi .node{width:14px;height:14px;border-radius:50%;position:absolute;}
+.hifi .eyebrow{text-transform:uppercase;letter-spacing:1px;font-size:12px;font-weight:700;color:var(--blue);margin-bottom:10px;}
+.hifi .badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:5px 10px;border-radius:999px;}
+.badge.green{background:#E7F5EC;color:var(--green);}
+.badge.amber{background:#FDEEE0;color:var(--amber);}
+.badge.teal{background:#E3F3F6;color:var(--teal);}
+.hifi .quote{border-left:3px solid var(--blue);padding-left:18px;font-style:italic;color:var(--ink);font-size:16px;}
+.hifi .wf-footer{background:var(--surface);}
+.hifi .icon-tile{width:40px;height:40px;border-radius:var(--r-sm);background:var(--blue-tint);display:flex;align-items:center;justify-content:center;color:var(--blue);font-weight:700;margin-bottom:12px;}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="group">
+    <label>Page</label>
+    <button data-role="page" data-val="home" class="active">Home</button>
+    <button data-role="page" data-val="agentic">Agentic AI Hub</button>
+    <button data-role="page" data-val="service">Service Page</button>
+    <button data-role="page" data-val="case">Case Study</button>
+    <button data-role="page" data-val="contact">Start a Pilot</button>
+  </div>
+  <div class="group">
+    <label>Fidelity</label>
+    <button data-role="fidelity" data-val="lofi" class="active">Low-Fi</button>
+    <button data-role="fidelity" data-val="hifi">High-Fi</button>
+  </div>
+  <div class="group">
+    <label>Breakpoint</label>
+    <button data-role="bp" data-val="desktop" class="active">Desktop</button>
+    <button data-role="bp" data-val="tablet">Tablet</button>
+    <button data-role="bp" data-val="mobile">Mobile</button>
+  </div>
+</div>
+
+<div class="stage">
+  <div class="frame-shell" id="shell">
+    <div class="frame desktop lofi" id="frame"></div>
+  </div>
+</div>
+
+<script>
+const state = { page:'home', fidelity:'lofi', bp:'desktop' };
+
+function navBar(){
+  return `
+  <div class="wf-nav">
+    <div class="${state.fidelity==='lofi'?'logo-box':'logo'}">${state.fidelity==='hifi'?'accelance':''}</div>
+    <div class="links">
+      <span>Agentified Services</span><span>Industries</span><span>Products</span><span>Resources</span><span>Company</span>
+    </div>
+    <div class="${state.fidelity==='lofi'?'btn':'btn-primary'}">Start the no-cost pilot</div>
+  </div>`;
+}
+
+function footer(){
+  const cols = ['Services','Products','Resources','Company'];
+  if(state.fidelity==='lofi'){
+    return `<div class="wf-footer">${cols.map(c=>`<div><div class="lorem-line" style="width:70px"></div><div class="lorem-line" style="width:50px"></div><div class="lorem-line" style="width:60px"></div></div>`).join('')}</div>`;
+  }
+  return `<div class="wf-footer">${cols.map(c=>`<div><strong style="color:var(--ink)">${c}</strong><p style="margin:10px 0 0;font-size:13px">Link&nbsp;one<br>Link&nbsp;two<br>Link&nbsp;three</p></div>`).join('')}<div style="margin-left:auto;font-size:12px">© accelance — confirmed partners: Microsoft · SAP · UiPath · OutSystems · Salesforce</div></div>`;
+}
+
+function crumb(txt){
+  return state.fidelity==='lofi'
+    ? `<div class="wf-crumb"><span class="tag">Home / Agentified Services / ${txt}</span></div>`
+    : `<div class="wf-crumb" style="color:var(--body)">Home / Agentified Services / <strong style="color:var(--ink)">${txt}</strong></div>`;
+}
+
+function placeholderBlock(h){
+  return `<div class="placeholder-block" style="height:${h}px">image / illustration</div>`;
+}
+
+function loremLines(n,w){
+  let out='';
+  for(let i=0;i<n;i++) out+=`<div class="lorem-line" style="width:${w||'100%'}"></div>`;
+  return out;
+}
+
+/* ---------------- PAGE TEMPLATES ---------------- */
+
+function pageHome(){
+  const lo = state.fidelity==='lofi';
+  return `
+  ${navBar()}
+  <div class="wf-section">
+    <div class="two-col">
+      <div>
+        ${lo? `<div class="tag" style="margin-bottom:14px;display:inline-block">EYEBROW</div><h1 style="font-family:inherit">Future Ready,<br>with Accelance.</h1>${loremLines(2)}
+          <div style="display:flex;gap:12px;margin-top:20px"><div class="btn">Start your transformation</div><div class="btn">Explore AI Use Cases</div></div>`
+        : `<div class="eyebrow">Agentic AI, Accountable by Design</div><h1>Turn ERP, CRM, and core ops into systems that act — safely.</h1><p>We don't replace what already works. We give it a governed, agentic layer that scales, adapts, and acts — with every autonomous decision visible and approved.</p>
+          <div style="display:flex;gap:12px"><div class="btn-primary">Start the no-cost pilot</div><div class="btn-secondary">Explore Agentic AI</div></div>`}
+      </div>
+      <div>${lo? placeholderBlock(220) : `<div class="hero-visual"><div class="node" style="background:var(--blue);top:40%;left:30%"></div><div class="node" style="background:var(--green);top:60%;left:55%"></div><div class="node" style="background:var(--amber);top:30%;left:65%"></div><span style="color:var(--blue);font-family:'Space Grotesk';font-weight:700;font-size:14px">system diagram</span></div>`}</div>
+    </div>
+  </div>
+  <div class="wf-section" style="background:${lo?'transparent':'var(--surface)'}">
+    ${lo? `<div class="tag">TRUST STRIP</div><div class="grid-4" style="margin-top:16px">${'<div class="placeholder-block" style="height:36px">logo</div>'.repeat(4)}</div>`
+       : `<p style="text-align:center;font-size:13px;text-transform:uppercase;letter-spacing:1px;font-weight:600">Confirmed Partners</p><div class="grid-4">${['Microsoft','SAP','UiPath','Salesforce'].map(p=>`<div style="text-align:center;color:var(--body);font-weight:600">${p}</div>`).join('')}</div>`}
+  </div>
+  <div class="wf-section">
+    ${lo? `<h2>WHAT WE DO</h2>` : `<div class="eyebrow">What We Do</div><h2>We enable digital progress where it matters most</h2><p>With a blend of strategy, technology, and execution — each service below solves a distinct problem, not a repeated one.</p>`}
+    <div class="grid-3" style="margin-top:20px">
+      ${['Agentic AI','Intelligent BPM','Process Mining'].map(s=>lo
+        ? `<div class="card"><div class="icon-dot"></div>${loremLines(2)}<div class="tag" style="margin-top:8px">Learn more →</div></div>`
+        : `<div class="card"><div class="icon-tile">◆</div><h3>${s}</h3><p style="font-size:14px">${s==='Agentic AI'?'Governed autonomous agents for core operations, with approval built in.':s==='Intelligent BPM'?'Self-improving workflow orchestration across your existing process layer.':'Surface hidden inefficiencies directly from your system event logs.'}</p><div style="color:var(--blue);font-weight:600;font-size:14px">Learn more →</div></div>`
+      ).join('')}
+    </div>
+  </div>
+  <div class="wf-section" style="background:${lo?'transparent':'var(--blue-tint)'}">
+    ${lo? `<h2>TRENDING / INSIGHTS</h2><div class="grid-3">${'<div class="card">'+loremLines(3)+'</div>'.repeat(3)}</div>`
+       : `<div class="eyebrow">Insights</div><h2>Human-in-the-loop Automation</h2><p style="max-width:520px">Agentic AI isn't about replacing people. It's about enabling intelligent collaboration between humans and systems.</p><div class="btn-secondary" style="display:inline-block">Agentic AI</div>`}
+  </div>
+  ${footer()}`;
+}
+
+function pageAgentic(){
+  const lo = state.fidelity==='lofi';
+  return `
+  ${navBar()}
+  ${crumb('Agentic AI')}
+  <div class="wf-section">
+    ${lo? `<h1>AGENTIC AI ISN'T [X]. IT'S [Y].</h1>${loremLines(2)}<div class="btn" style="margin-top:12px">Explore Agentic AI</div>`
+       : `<div class="eyebrow">Agentic AI</div><h1>Autonomous isn't the risk. Unaccountable is.</h1><p style="max-width:560px">Every agent-proposed action at Accelance renders as a confirmation — reviewed, approved, or escalated before it ever touches your system of record.</p><div class="btn-primary" style="display:inline-block">Start the no-cost pilot</div>`}
+  </div>
+  <div class="wf-section" style="background:${lo?'transparent':'var(--surface)'}">
+    ${lo? `<h2>GOVERNANCE MODEL</h2><div class="grid-3">${'<div class="card"><div class="icon-dot"></div>'+loremLines(2)+'</div>'.repeat(3)}</div>`
+       : `<h2>Three states. Always visible.</h2><div class="grid-3">
+          <div class="card"><span class="badge green">● Autonomous</span><p style="margin-top:12px;font-size:14px">Low-risk actions the agent completes without waiting on review.</p></div>
+          <div class="card"><span class="badge amber">◐ Review required</span><p style="margin-top:12px;font-size:14px">The agent proposes; a person approves before anything executes.</p></div>
+          <div class="card"><span class="badge teal">🔒 Mandatory approval</span><p style="margin-top:12px;font-size:14px">High-impact actions that always require an explicit sign-off.</p></div>
+        </div>`}
+  </div>
+  <div class="wf-section">
+    ${lo? `<h2>ACTION CONFIRMATION CARD (COMPONENT DEMO)</h2>${placeholderBlock(120)}`
+       : `<h2>What approval actually looks like</h2><div class="card" style="max-width:480px">
+          <span class="badge amber">◐ Review required</span>
+          <h3 style="margin-top:14px">Reassign 12 overdue supplier invoices to backup approver</h3>
+          <p style="font-size:14px">Reasoning: primary approver has been inactive for 6 business days.</p>
+          <div style="display:flex;gap:10px"><div class="btn-primary">Approve</div><div class="btn-secondary">Reject</div></div>
+        </div>`}
+  </div>
+  ${footer()}`;
+}
+
+function pageService(){
+  const lo = state.fidelity==='lofi';
+  return `
+  ${navBar()}
+  ${crumb('Intelligent Business Process Management')}
+  <div class="wf-section two-col">
+    <div>${lo? `<h1>SERVICE HEADLINE</h1>${loremLines(3)}<div class="btn">Start the no-cost pilot</div>`
+       : `<div class="eyebrow">Intelligent Business Process Management</div><h1>Your workflows aren't broken. They're just static.</h1><p>We turn fixed process flows into self-improving systems — without discarding the process logic your teams already trust.</p><div class="btn-primary">Start the no-cost pilot</div>`}</div>
+    <div>${lo? placeholderBlock(200) : `<div class="hero-visual" style="height:200px"><div class="node" style="background:var(--blue);top:45%;left:40%"></div></div>`}</div>
+  </div>
+  <div class="wf-section" style="background:${lo?'transparent':'var(--surface)'}">
+    ${lo? `<h2>WHAT'S INCLUDED</h2><div class="grid-4">${'<div class="card"><div class="icon-dot"></div>'+loremLines(1)+'</div>'.repeat(4)}</div>`
+       : `<h2>What's included</h2><div class="grid-4">${['Process discovery','Workflow redesign','Agent handoff points','Ongoing tuning'].map(t=>`<div class="card"><div class="icon-tile">◆</div><h3 style="font-size:15px">${t}</h3></div>`).join('')}</div>`}
+  </div>
+  <div class="wf-section">
+    ${lo? `<h2>PROOF POINT</h2><div class="card">${loremLines(3)}</div>`
+       : `<div class="quote">"We didn't rebuild our ERP. We gave the process layer sitting on top of it a way to flag its own bottlenecks."<br><span style="font-size:13px;color:var(--body)">— Operations Director, Manufacturing sector (anonymized)</span></div>`}
+  </div>
+  ${footer()}`;
+}
+
+function pageCase(){
+  const lo = state.fidelity==='lofi';
+  return `
+  ${navBar()}
+  ${crumb('Case Study')}
+  <div class="wf-section">
+    ${lo? `<div class="tag">ROLE + SECTOR</div><h1>CASE STUDY TITLE</h1>`
+       : `<span class="badge teal">Operations Director · Logistics sector</span><h1 style="margin-top:14px">Cutting supplier exception-handling time without adding headcount</h1>`}
+  </div>
+  <div class="wf-section" style="background:${lo?'transparent':'var(--surface)'}">
+    <div class="grid-3">
+      ${['Situation','Approach','Outcome'].map(s=>lo
+        ? `<div class="card"><h3>${s.toUpperCase()}</h3>${loremLines(3)}</div>`
+        : `<div class="card"><h3>${s}</h3><p style="font-size:14px">${s==='Situation'?'Manual exception review across supplier invoices created a persistent backlog.':s==='Approach'?'Introduced an agent that flags and routes exceptions, with mandatory approval on anything above threshold.':'Backlog cleared within the review cycle; every routed action remained fully auditable.'}</p></div>`
+      ).join('')}
+    </div>
+  </div>
+  <div class="wf-section">
+    ${lo? `<div class="card">${loremLines(2)}</div>` : `<div class="quote">"The approval step is what made our compliance team comfortable signing off."<br><span style="font-size:13px;color:var(--body)">— Risk & Compliance Lead, Logistics sector (anonymized)</span></div>`}
+  </div>
+  ${footer()}`;
+}
+
+function pageContact(){
+  const lo = state.fidelity==='lofi';
+  const field = (label)=> lo
+    ? `<div style="margin-bottom:14px"><div class="lorem-line" style="width:80px;height:8px"></div><div class="card" style="height:14px;margin-top:4px"></div></div>`
+    : `<div style="margin-bottom:16px"><label style="font-size:13px;font-weight:600;display:block;margin-bottom:6px">${label}</label><div style="border:1px solid var(--line);border-radius:var(--r-sm);height:40px;background:#fff"></div></div>`;
+  return `
+  ${navBar()}
+  <div class="wf-section" style="max-width:520px;margin:0 auto">
+    ${lo? `<h1 style="text-align:center">START a PILOT (FORM)</h1><div class="tag" style="display:block;text-align:center;margin:10px 0">Step 1 of 3</div>`
+       : `<h1 style="text-align:center;font-size:30px">Start the no-cost pilot</h1><p style="text-align:center">Tell us what you're solving for — we'll route you to the right team.</p><div style="display:flex;justify-content:center;gap:6px;margin-bottom:20px"><span class="badge green">1</span><span class="badge" style="background:#eee;color:#999">2</span><span class="badge" style="background:#eee;color:#999">3</span></div>`}
+    ${field('What best describes your goal?')}
+    ${field('Work email')}
+    ${field('Company name')}
+    <div class="${lo?'btn':'btn-primary'}" style="text-align:center;margin-top:10px">${lo?'Continue':'Continue'}</div>
+  </div>
+  ${footer()}`;
+}
+
+const PAGES = {home:pageHome, agentic:pageAgentic, service:pageService, case:pageCase, contact:pageContact};
+
+function render(){
+  const frame = document.getElementById('frame');
+  frame.className = `frame ${state.bp} ${state.fidelity}`;
+  frame.innerHTML = PAGES[state.page]();
+  fitScale();
+}
+
+function fitScale(){
+  const shell = document.getElementById('shell');
+  const widths = {desktop:1200, tablet:820, mobile:380};
+  const target = widths[state.bp];
+  const available = document.querySelector('.stage').clientWidth - 24;
+  const scale = Math.min(1, available/target);
+  shell.style.transform = `scale(${scale})`;
+}
+
+document.querySelectorAll('.toolbar button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const role = btn.dataset.role;
+    document.querySelectorAll(`[data-role="${role}"]`).forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    state[role] = btn.dataset.val;
+    render();
+  });
+});
+window.addEventListener('resize', fitScale);
+render();
+</script>
+</body>
+</html>

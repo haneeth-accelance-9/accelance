@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:#1C1F23;background:#FFFFFF}
+a{color:#1A6FC4;text-decoration:none}
+a:hover{color:#124E8F}
+@media (prefers-reduced-motion: reduce){*{animation-duration:1ms !important;transition-duration:1ms !important}}
+</style>
+</helmet>
+
+<dc-import name="SiteNav" active="products" hint-size="100%,72px"></dc-import>
+<div style="height:72px" aria-hidden="true"></div>
+
+<main data-screen-label="Supplier Collaboration Portal">
+
+  <section style="background:#FFFFFF">
+    <div style="max-width:1280px;margin:0 auto;padding:32px 24px 0">
+      <nav aria-label="Breadcrumb">
+        <ol style="list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;font-size:13px;color:#8B939B">
+          <li><a href="Home.dc.html" style="color:#8B939B" style-hover="color:#1A6FC4">Home</a><span aria-hidden="true" style="margin-left:8px">/</span></li>
+          <li><a href="Products.dc.html" style="color:#8B939B" style-hover="color:#1A6FC4">Products</a><span aria-hidden="true" style="margin-left:8px">/</span></li>
+          <li aria-current="page" style="color:#1C1F23;font-weight:500">Supplier Collaboration Portal</li>
+        </ol>
+      </nav>
+    </div>
+    <div style="max-width:1280px;margin:0 auto;padding:56px 24px 80px;display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:56px;align-items:center">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#1A6FC4;margin-bottom:20px">Supplier Collaboration Portal</div>
+        <h1 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(2.2rem,4vw,3rem);font-weight:600;letter-spacing:-0.01em;line-height:1.12;margin:0 0 24px">Vendors. Compliance. <span style="color:#1A6FC4">Control.</span></h1>
+        <p style="font-size:1.125rem;line-height:1.6;color:#5B5F66;margin:0 0 32px">A modular platform that centralizes supplier operations, compliance, and performance across industries — with every automated action governed by the same three-tier approval model as everything Accelance ships.</p>
+        <a href="Contact.dc.html" style="background:#1A6FC4;color:#FFFFFF;font-size:16px;font-weight:600;padding:14px 26px;border-radius:6px;display:inline-block;transition:background 150ms ease" style-hover="background:#124E8F;color:#FFFFFF">Request a Demo</a>
+      </div>
+      <div style="background:#EAF2FB;border-radius:20px;padding:32px">
+        <div style="background:#FFFFFF;border:1px solid #E4E9EF;border-radius:12px;overflow:hidden;box-shadow:0 12px 32px rgba(28,31,35,0.08)">
+          <div style="padding:14px 20px;border-bottom:1px solid #EEF1F4;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8B939B">Vendor compliance — schematic view</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8B939B">status-tag pattern</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1.2fr 1fr 1.4fr;background:#1A6FC4;color:#FFFFFF;font-size:12px;font-weight:600;padding:10px 20px">
+            <span>Vendor</span><span>Case</span><span>Agent status</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1.2fr 1fr 1.4fr;align-items:center;padding:12px 20px;font-size:13px;border-bottom:1px solid #F2F5F8">
+            <span style="font-family:'IBM Plex Mono',monospace;color:#5B5F66">VND-0148</span><span style="color:#1C1F23">Cert renewal</span>
+            <span style="justify-self:start;display:inline-flex;align-items:center;gap:6px;background:#E7F2EC;color:#1A7A4A;font-size:12px;font-weight:600;border-radius:999px;padding:3px 10px"><span style="width:8px;height:8px;border-radius:999px;background:#1A7A4A"></span>Autonomous</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1.2fr 1fr 1.4fr;align-items:center;padding:12px 20px;font-size:13px;border-bottom:1px solid #F2F5F8;background:#FAFCFE">
+            <span style="font-family:'IBM Plex Mono',monospace;color:#5B5F66">VND-0092</span><span style="color:#1C1F23">Doc exception</span>
+            <span style="justify-self:start;display:inline-flex;align-items:center;gap:6px;background:#F9EFE3;color:#8A4A00;font-size:12px;font-weight:600;border-radius:999px;padding:3px 10px"><span style="width:8px;height:8px;border-radius:999px;background:#B85400"></span>Review required</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1.2fr 1fr 1.4fr;align-items:center;padding:12px 20px;font-size:13px">
+            <span style="font-family:'IBM Plex Mono',monospace;color:#5B5F66">VND-0210</span><span style="color:#1C1F23">Offboarding</span>
+            <span style="justify-self:start;display:inline-flex;align-items:center;gap:6px;background:#F7E9E7;color:#B3362B;font-size:12px;font-weight:600;border-radius:999px;padding:3px 10px"><span style="width:8px;height:8px;border-radius:999px;background:#B3362B"></span>Mandatory approval</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Portal / Capabilities" style="background:#F4F8FC">
+    <div style="max-width:1280px;margin:0 auto;padding:88px 24px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px">
+        <div style="background:#FFFFFF;border:1px solid #E4E9EF;border-radius:12px;padding:32px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:1.375rem;font-weight:600;letter-spacing:-0.01em;color:#1A6FC4;margin-bottom:10px">Vendors</div>
+          <p style="font-size:15px;line-height:1.6;color:#5B5F66;margin:0">One place for supplier onboarding, documents, and collaboration — vendors keep their own records current instead of emailing them to yours.</p>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #E4E9EF;border-radius:12px;padding:32px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:1.375rem;font-weight:600;letter-spacing:-0.01em;color:#0B7690;margin-bottom:10px">Compliance</div>
+          <p style="font-size:15px;line-height:1.6;color:#5B5F66;margin:0">Certification tracking with an audit trail your risk team can actually open — expirations surface as agent proposals, never silent flags.</p>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #E4E9EF;border-radius:12px;padding:32px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:1.375rem;font-weight:600;letter-spacing:-0.01em;color:#1C1F23;margin-bottom:10px">Control</div>
+          <p style="font-size:15px;line-height:1.6;color:#5B5F66;margin:0">Every automated supplier action is tiered — routine reminders run autonomous, exceptions wait for review, offboarding never moves without sign-off.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Portal / Proof" style="background:#FFFFFF">
+    <div style="max-width:1280px;margin:0 auto;padding:88px 24px">
+      <div style="border:1.5px dashed #C8D8EC;border-radius:12px;padding:36px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px">
+        <div style="max-width:620px">
+          <div style="display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#B85400;background:#F9EFE3;border-radius:999px;padding:4px 12px;margin-bottom:16px">Client Success Story Placeholder</div>
+          <p style="font-size:15px;line-height:1.6;color:#5B5F66;margin:0">A verified supplier-operations outcome — [Role], [Sector] — publishes here once real data is supplied.</p>
+        </div>
+        <a href="CaseStudies.dc.html" style="flex:none;font-size:15px;font-weight:600">Read the case studies →</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Portal / CTA" style="background:#124E8F">
+    <div style="max-width:1280px;margin:0 auto;padding:80px 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px">
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(1.7rem,2.6vw,2.25rem);font-weight:600;letter-spacing:-0.01em;line-height:1.2;color:#FFFFFF;margin:0;max-width:640px">See it running on a sample of your own vendor list.</h2>
+      <a href="Contact.dc.html" style="flex:none;background:#FFFFFF;color:#124E8F;font-size:16px;font-weight:600;padding:16px 30px;border-radius:6px;transition:background 150ms ease" style-hover="background:#EAF2FB;color:#124E8F">Request a Demo</a>
+    </div>
+  </section>
+
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,480px"></dc-import>
+</x-dc>
+</body>
+</html>

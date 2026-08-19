@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:#1C1F23;background:#FFFFFF}
+a{color:#1A6FC4;text-decoration:none}
+a:hover{color:#124E8F}
+</style>
+</helmet>
+<footer style="background:#1C1F23;color:#B9C0C7;font-family:Inter,sans-serif">
+  <div style="max-width:1280px;margin:0 auto;padding:72px 24px 32px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:48px 32px">
+      <div style="grid-column:span 1;min-width:220px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;letter-spacing:-0.02em;color:#FFFFFF;margin-bottom:12px">accelance</div>
+        <div style="font-size:14px;line-height:1.6;color:#8B939B;max-width:260px">Agentic AI, Accountable by Design. Nothing is replaced. Nothing runs silently.</div>
+      </div>
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#6E7680;margin-bottom:16px">Services</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="AgenticAI.dc.html" style="color:#B9C0C7;font-size:14px" style-hover="color:#FFFFFF">Agentic AI</a>
+          <a href="Service.dc.html?s=process-assessments" style="color:#B9C0C7;font-size:14px" style-hover="color:#FFFFFF">Process Assessments</a>
+          <a href="Service.dc.html?s=intelligent-bpm" style="color:#B9C0C7;font-size:14px" style-hover="color:#FFFFFF">Intelligent BPM</a>
+          <a href="Service.dc.html?s=process-mining" style="color:#B9C0C7;font-size:14px" style-hover="color:#FFFFFF">Process Mining</a>
+          <a href="Service.dc.html?s=rpa" style="color:#B9C0C7;font-size:14px" style-hover="color:#FFFFFF">RPA</a>
+          <a href="Services.dc.html" style="color:#B9C0C7;font-size:14px" style-hover="color:#FFFFFF">All services</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#6E7680;margin-bottom:16px">Products</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="SupplierPortal.dc.html" style="color:#B9C0C7;font-size:14px" style-hover="color:#FFFFFF">Supplier Collaboration Portal</a>
+          <a href="Solutions.dc.html" style="color:#B9C0C7;font-size:14px" style-hover="color:#FFFFFF">Solutions</a>
+          <a href="Industries.dc.html" style="color:#B9C0C7;font-size:14px" style-hover="color:#FFFFFF">Industries</a>
+          <a href="Governance.dc.html" style="color:#B9C0C7;font-size:14px" style-hover="color:#FFFFFF">Governance Model</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#6E7680;margin-bottom:16px">Resources</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <a href="Insights.dc.html" style="color:#B9C0C7;font-size:14px" style-hover="color:#FFFFFF">Insights</a>
+          <a href="CaseStudies.dc.html" style="color:#B9C0C7;font-size:14px" style-hover="color:#FFFFFF">Case Studies</a>
+          <a href="Events.dc.html" style="color:#B9C0C7;font-size:14px" style-hover="color:#FFFFFF">Events</a>
+          <a href="Documentation.dc.html" style="color:#B9C0C7;font-size:14px" style-hover="color:#FFFFFF">Documentation</a>
+          <a href="DeveloperPortal.dc.html" style="color:#B9C0C7;font-size:14px" style-hover="color:#FFFFFF">Developer Portal</a>
+          <a href="CustomerPortal.dc.html" style="color:#B9C0C7;font-size:14px" style-hover="color:#FFFFFF">Customer Portal</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#6E7680;margin-bottom:16px">Company</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px">
+          <a href="About.dc.html" style="color:#B9C0C7;font-size:14px" style-hover="color:#FFFFFF">About</a>
+          <a href="Careers.dc.html" style="color:#B9C0C7;font-size:14px" style-hover="color:#FFFFFF">Careers</a>
+          <a href="Community.dc.html" style="color:#B9C0C7;font-size:14px" style-hover="color:#FFFFFF">Community</a>
+          <a href="Contact.dc.html" style="color:#B9C0C7;font-size:14px" style-hover="color:#FFFFFF">Contact</a>
+        </div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#6E7680;margin-bottom:12px">Subscribe for new Insights</div>
+        <sc-if value="{{ notDone }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ subscribe }}" style="display:flex;gap:8px">
+            <input type="email" required="required" value="{{ email }}" onChange="{{ setEmail }}" placeholder="Work email" aria-label="Work email" style="flex:1;min-width:0;background:#262C31;border:1px solid #3A4147;border-radius:6px;color:#FFFFFF;font-family:Inter,sans-serif;font-size:14px;padding:10px 12px;outline:none" style-focus="border-color:#5B9EE0">
+            <button type="submit" style="flex:none;background:#1A6FC4;color:#FFFFFF;border:none;border-radius:6px;font-family:Inter,sans-serif;font-size:14px;font-weight:600;padding:10px 14px;cursor:pointer;transition:background 150ms ease" style-hover="background:#124E8F">Subscribe</button>
+          </form>
+        </sc-if>
+        <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
+          <div role="status" style="font-size:14px;color:#3FA873;line-height:1.5">Subscribed. New Insights will land in your inbox — no more than one a week.</div>
+        </sc-if>
+      </div>
+    </div>
+    <div style="border-top:1px solid #2A3136;margin-top:56px;padding-top:24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px">
+      <div style="font-size:13px;color:#6E7680">© 2026 accelance · <span style="color:#8B939B">Privacy Policy</span> · <span style="color:#8B939B">Terms</span></div>
+      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:10px 20px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#6E7680">Confirmed partners</span>
+        <span style="font-size:13px;font-weight:600;color:#8B939B">Microsoft</span>
+        <span style="font-size:13px;font-weight:600;color:#8B939B">SAP</span>
+        <span style="font-size:13px;font-weight:600;color:#8B939B">UiPath</span>
+        <span style="font-size:13px;font-weight:600;color:#8B939B">OutSystems</span>
+        <span style="font-size:13px;font-weight:600;color:#8B939B">Salesforce</span>
+      </div>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:520}}">
+class Component extends DCLogic {
+  state = { email: '', done: false };
+  renderVals() {
+    return {
+      email: this.state.email,
+      done: this.state.done,
+      notDone: !this.state.done,
+      setEmail: (e) => this.setState({ email: e.target.value }),
+      subscribe: (e) => { e.preventDefault(); this.setState({ done: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

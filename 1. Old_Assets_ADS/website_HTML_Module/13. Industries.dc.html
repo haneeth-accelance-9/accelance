@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:#1C1F23;background:#FFFFFF}
+a{color:#1A6FC4;text-decoration:none}
+a:hover{color:#124E8F}
+@media (prefers-reduced-motion: reduce){*{animation-duration:1ms !important;transition-duration:1ms !important}}
+</style>
+</helmet>
+
+<dc-import name="SiteNav" active="industries" hint-size="100%,72px"></dc-import>
+<div style="height:72px" aria-hidden="true"></div>
+
+<main data-screen-label="Industries">
+
+  <section style="background:#FFFFFF">
+    <div style="max-width:1280px;margin:0 auto;padding:88px 24px 56px">
+      <div style="max-width:800px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#1A6FC4;margin-bottom:20px">Industries</div>
+        <h1 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(2.2rem,4vw,3rem);font-weight:600;letter-spacing:-0.01em;line-height:1.12;margin:0 0 24px">Industry-specific challenges require more than industry-specific language.</h1>
+        <p style="font-size:1.125rem;line-height:1.6;color:#5B5F66;margin:0 0 24px">We work across operations-heavy, compliance-sensitive sectors. Below are the areas where our service portfolio applies most directly — this list will grow as we publish verified sector work.</p>
+        <div style="display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.6;color:#8A4A00;background:#F9EFE3;border-radius:6px;padding:8px 14px;max-width:680px">The categories below are structural placeholders derived from Accelance's existing service and product focus — not confirmed vertical wins. Sector prioritization requires direct input.</div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Industries / Cards" style="background:#F4F8FC">
+    <div style="max-width:1280px;margin:0 auto;padding:80px 24px 96px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px">
+
+        <div style="background:#FFFFFF;border:1px solid #E4E9EF;border-radius:12px;overflow:hidden;display:flex;flex-direction:column">
+          <div style="height:200px">
+            <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="industry-manufacturing" shape="rect" placeholder="Documentary photo: warehouse worker reviewing a tablet, natural light (see Phase 6 prompt #5)" hint-size="100%,200px"></x-import>
+          </div>
+          <div style="padding:28px 32px 32px;display:flex;flex-direction:column;flex:1">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:1.375rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:10px">Manufacturing &amp; Supply Chain</div>
+            <p style="font-size:15px;line-height:1.6;color:#5B5F66;margin:0 0 18px;flex:1">Vendor compliance, procurement exceptions, and process visibility across the supply chain.</p>
+            <a href="Contact.dc.html" style="font-size:14px;font-weight:600">Learn more →</a>
+          </div>
+        </div>
+
+        <div style="background:#FFFFFF;border:1px solid #E4E9EF;border-radius:12px;overflow:hidden;display:flex;flex-direction:column">
+          <div style="height:200px">
+            <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="industry-financial" shape="rect" placeholder="Documentary photo: reviewing a compliance dashboard, soft window light (see Phase 6 prompt #6)" hint-size="100%,200px"></x-import>
+          </div>
+          <div style="padding:28px 32px 32px;display:flex;flex-direction:column;flex:1">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:1.375rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:10px">Financial &amp; Business Operations</div>
+            <p style="font-size:15px;line-height:1.6;color:#5B5F66;margin:0 0 18px;flex:1">Governance-first automation for workflows where an audit trail isn't optional.</p>
+            <a href="Contact.dc.html" style="font-size:14px;font-weight:600">Learn more →</a>
+          </div>
+        </div>
+
+        <div style="background:#FFFFFF;border:1.5px dashed #C8D8EC;border-radius:12px;display:flex;flex-direction:column">
+          <div style="height:200px;display:flex;align-items:center;justify-content:center;border-bottom:1.5px dashed #E4E9EF">
+            <span style="display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#8A4A00;background:#F9EFE3;border-radius:999px;padding:4px 12px">Client Success Story Placeholder</span>
+          </div>
+          <div style="padding:28px 32px 32px;display:flex;flex-direction:column;flex:1">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:1.375rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:10px">Healthcare &amp; Regulated Operations</div>
+            <p style="font-size:15px;line-height:1.6;color:#5B5F66;margin:0 0 18px;flex:1">Publishes once verified sector work exists — the placeholder stays until then.</p>
+            <a href="Contact.dc.html" style="font-size:14px;font-weight:600">Learn more →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Industries / CTA" style="background:#124E8F">
+    <div style="max-width:1280px;margin:0 auto;padding:80px 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px">
+      <div style="max-width:640px">
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(1.7rem,2.6vw,2.25rem);font-weight:600;letter-spacing:-0.01em;line-height:1.2;color:#FFFFFF;margin:0 0 12px">Don't see your sector?</h2>
+        <p style="font-size:1.125rem;line-height:1.6;color:#C8D8EC;margin:0">The governance model is sector-agnostic. Tell us what you're solving for.</p>
+      </div>
+      <a href="Contact.dc.html" style="flex:none;background:#FFFFFF;color:#124E8F;font-size:16px;font-weight:600;padding:16px 30px;border-radius:6px;transition:background 150ms ease" style-hover="background:#EAF2FB;color:#124E8F">Talk to our team</a>
+    </div>
+  </section>
+
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,480px"></dc-import>
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,21 @@
+*
+!.gitignore
+!*/
+
+# Documentation and HTML
+!*.md
+!*.html
+
+# Images
+!*.avif
+!*.bmp
+!*.gif
+!*.ico
+!*.jpeg
+!*.jpg
+!*.jfif
+!*.png
+!*.svg
+!*.tif
+!*.tiff
+!*.webp

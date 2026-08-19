@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:#1C1F23;background:#FFFFFF}
+a{color:#1A6FC4;text-decoration:none}
+a:hover{color:#124E8F}
+</style>
+</helmet>
+<div aria-live="polite" style="background:#FFFFFF;border:1px solid #E4E9EF;border-top:3px solid {{ accent }};border-radius:12px;padding:20px 22px;box-shadow:0 4px 16px rgba(28,31,35,0.06);font-family:Inter,sans-serif;transition:border-color 300ms ease">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+    <span style="display:inline-flex;align-items:center;gap:8px;padding:4px 12px 4px 8px;border-radius:999px;background:{{ pillBg }};color:{{ pillColor }};font-size:13px;font-weight:600;transition:background 300ms ease,color 300ms ease">
+      <sc-if value="{{ isAmber }}" hint-placeholder-val="{{ true }}">
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="5.5" fill="none" stroke="#B85400" stroke-width="1.75"></circle><path d="M7 1.5a5.5 5.5 0 0 1 0 11Z" fill="#B85400"></path></svg>
+      </sc-if>
+      <sc-if value="{{ isGreen }}" hint-placeholder-val="{{ false }}">
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="6" fill="#1A7A4A"></circle><path d="M4.2 7.2l1.9 1.9 3.7-4" stroke="#FFFFFF" stroke-width="1.75" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </sc-if>
+      <sc-if value="{{ isRed }}" hint-placeholder-val="{{ false }}">
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 1.2l4.8 1.8v3.4c0 2.9-2 5.4-4.8 6.4-2.8-1-4.8-3.5-4.8-6.4V3Z" fill="none" stroke="#B3362B" stroke-width="1.5"></path><path d="M5.3 5.3l3.4 3.4M8.7 5.3L5.3 8.7" stroke="#B3362B" stroke-width="1.5" stroke-linecap="round"></path></svg>
+      </sc-if>
+      {{ pillLabel }}
+    </span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8B939B">agent: {{ agentName }}</span>
+  </div>
+
+  <div style="font-size:16px;font-weight:600;color:#1C1F23;line-height:1.45;margin:14px 0 6px">{{ actionText }}</div>
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#5B5F66;line-height:1.5">└ {{ reasoningText }}</div>
+
+  <button onClick="{{ toggleWhy }}" aria-expanded="{{ expanded }}" style="background:none;border:none;padding:0;margin:14px 0 0;cursor:pointer;font-family:Inter,sans-serif;font-size:13px;font-weight:600;color:#1A6FC4" style-hover="color:#124E8F">{{ whyLabel }}</button>
+
+  <sc-if value="{{ expanded }}" hint-placeholder-val="{{ false }}">
+    <div style="border-left:2px solid #E4E9EF;margin:12px 0 0 4px;padding-left:16px;display:flex;flex-direction:column;gap:10px">
+      <sc-for list="{{ entries }}" as="entry" hint-placeholder-count="1">
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8B939B;margin-bottom:2px">{{ entry.time }}</div>
+          <div style="font-size:13px;color:#1C1F23;line-height:1.5">{{ entry.text }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <div style="border-top:1px solid #EEF1F4;margin-top:16px;padding-top:16px">
+    <sc-if value="{{ pending }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <button onClick="{{ approve }}" style="background:#1A6FC4;color:#FFFFFF;border:none;border-radius:6px;font-family:Inter,sans-serif;font-size:14px;font-weight:600;padding:11px 22px;cursor:pointer;transition:background 150ms ease" style-hover="background:#124E8F">Approve</button>
+        <button onClick="{{ reject }}" style="background:#FFFFFF;color:#B3362B;border:1px solid #D9B6B2;border-radius:6px;font-family:Inter,sans-serif;font-size:14px;font-weight:600;padding:11px 22px;cursor:pointer;transition:background 150ms ease,border-color 150ms ease" style-hover="background:#F9EFEE;border-color:#B3362B">Reject</button>
+      </div>
+    </sc-if>
+    <sc-if value="{{ approved }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <span role="status" style="font-size:14px;font-weight:600;color:#1A7A4A">Approved — action applied. Logged to the audit trail.</span>
+        <button onClick="{{ reset }}" style="background:none;border:none;padding:0;cursor:pointer;font-family:Inter,sans-serif;font-size:13px;color:#8B939B;text-decoration:underline" style-hover="color:#1C1F23">Reset demo</button>
+      </div>
+    </sc-if>
+    <sc-if value="{{ rejected }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <span role="status" style="font-size:14px;font-weight:600;color:#B3362B">Rejected — nothing executed.</span>
+        <sc-if value="{{ showReason }}" hint-placeholder-val="{{ false }}">
+          <form onSubmit="{{ logReason }}" style="display:flex;gap:8px;flex-wrap:wrap">
+            <input type="text" value="{{ reason }}" onChange="{{ setReason }}" placeholder="Reason for rejection (optional, logged)" aria-label="Reason for rejection" style="flex:1;min-width:200px;background:#FFFFFF;border:1px solid #C9D1D9;border-radius:6px;font-family:Inter,sans-serif;font-size:14px;color:#1C1F23;padding:10px 12px;outline:none" style-focus="border-color:#1A6FC4">
+            <button type="submit" style="background:#FFFFFF;color:#1C1F23;border:1px solid #C9D1D9;border-radius:6px;font-family:Inter,sans-serif;font-size:13px;font-weight:600;padding:10px 14px;cursor:pointer" style-hover="border-color:#1A6FC4;color:#1A6FC4">Log reason</button>
+          </form>
+        </sc-if>
+        <button onClick="{{ reset }}" style="align-self:flex-start;background:none;border:none;padding:0;cursor:pointer;font-family:Inter,sans-serif;font-size:13px;color:#8B939B;text-decoration:underline" style-hover="color:#1C1F23">Reset demo</button>
+      </div>
+    </sc-if>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:560,&quot;height&quot;:340},&quot;action&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Reassign 12 overdue supplier invoices to backup approver.&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;reasoning&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Primary approver has been inactive for 6 business days.&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;agent&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;ap-invoice-router&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tier: 'amber',
+      expanded: false,
+      reason: '',
+      showReason: false,
+      entries: [{ time: this._now(), text: 'Action proposed by agent — tagged review-required (amber). Waiting on a named approver.' }]
+    };
+  }
+
+  _now() {
+    return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  }
+
+  _log(text) {
+    return this.state.entries.concat([{ time: this._now(), text: text }]);
+  }
+
+  renderVals() {
+    const t = this.state.tier;
+    const pill = {
+      amber: { bg: '#F9EFE3', color: '#8A4A00', label: 'Review required', accent: '#B85400' },
+      green: { bg: '#E7F2EC', color: '#1A7A4A', label: 'Approved', accent: '#1A7A4A' },
+      red: { bg: '#F7E9E7', color: '#B3362B', label: 'Rejected', accent: '#B3362B' }
+    }[t];
+    return {
+      actionText: this.props.action ?? 'Reassign 12 overdue supplier invoices to backup approver.',
+      reasoningText: this.props.reasoning ?? 'Primary approver has been inactive for 6 business days.',
+      agentName: this.props.agent ?? 'ap-invoice-router',
+      isAmber: t === 'amber',
+      isGreen: t === 'green',
+      isRed: t === 'red',
+      pending: t === 'amber',
+      approved: t === 'green',
+      rejected: t === 'red',
+      pillBg: pill.bg,
+      pillColor: pill.color,
+      pillLabel: pill.label,
+      accent: pill.accent,
+      expanded: this.state.expanded,
+      whyLabel: this.state.expanded ? 'Hide audit trail' : 'Why? View audit trail',
+      toggleWhy: () => this.setState({ expanded: !this.state.expanded }),
+      entries: this.state.entries,
+      approve: () => this.setState({ tier: 'green', entries: this._log('Approved by reviewer — action applied and written to the audit log.') }),
+      reject: () => this.setState({ tier: 'red', showReason: true, entries: this._log('Rejected by reviewer — nothing executed.') }),
+      reset: () => this.setState({ tier: 'amber', showReason: false, reason: '', expanded: this.state.expanded, entries: this._log('Demo reset — action re-proposed, tagged review-required (amber).') }),
+      reason: this.state.reason,
+      showReason: this.state.showReason,
+      setReason: (e) => this.setState({ reason: e.target.value }),
+      logReason: (e) => {
+        e.preventDefault();
+        const r = this.state.reason.trim();
+        this.setState({ showReason: false, entries: this._log(r ? 'Rejection reason logged: "' + r + '"' : 'Rejection logged without a reason.') });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

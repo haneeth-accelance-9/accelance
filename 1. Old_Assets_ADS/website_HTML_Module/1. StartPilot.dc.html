@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:#1C1F23;background:#F4F8FC}
+a{color:#1A6FC4;text-decoration:none}
+a:hover{color:#124E8F}
+@keyframes acStepIn{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){*{animation-duration:1ms !important;transition-duration:1ms !important}}
+</style>
+</helmet>
+
+<dc-import name="SiteNav" hint-size="100%,72px"></dc-import>
+<div style="height:72px" aria-hidden="true"></div>
+
+<main data-screen-label="Start a Pilot">
+  <section style="min-height:calc(100vh - 72px);display:flex;align-items:flex-start;justify-content:center;padding:64px 24px 96px">
+    <div style="width:100%;max-width:720px">
+
+      <div style="text-align:center;margin-bottom:40px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#1A6FC4;margin-bottom:16px">No-cost pilot</div>
+        <h1 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(1.9rem,3.4vw,2.5rem);font-weight:600;letter-spacing:-0.01em;line-height:1.15;margin:0 0 14px">One workflow. Not your whole stack.</h1>
+        <p style="font-size:1.06rem;line-height:1.6;color:#5B5F66;margin:0 auto;max-width:520px">Three short steps. We reply within one business day with whether the workflow is a fit — and what the pilot would look like.</p>
+      </div>
+
+      <sc-if value="{{ notDone }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:36px" aria-label="Progress">
+          <sc-for list="{{ steps }}" as="s" hint-placeholder-count="3">
+            <div style="display:flex;align-items:center">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:8px;width:120px">
+                <span style="width:34px;height:34px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;background:{{ s.bg }};color:{{ s.color }};border:2px solid {{ s.border }};transition:background 250ms ease,border-color 250ms ease">{{ s.mark }}</span>
+                <span style="font-size:12px;font-weight:600;color:{{ s.labelColor }}">{{ s.label }}</span>
+              </div>
+              <sc-if value="{{ s.hasBar }}" hint-placeholder-val="{{ false }}">
+                <span style="width:60px;height:2px;background:{{ s.barColor }};margin:0 -26px 26px;transition:background 250ms ease"></span>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+
+        <form onSubmit="{{ next }}" style="background:#FFFFFF;border:1px solid #E4E9EF;border-radius:16px;padding:44px;box-shadow:0 8px 28px rgba(28,31,35,0.06)">
+
+          <sc-if value="{{ step1 }}" hint-placeholder-val="{{ true }}">
+            <div style="animation:acStepIn 250ms ease-out">
+              <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.375rem;font-weight:600;letter-spacing:-0.01em;margin:0 0 8px">The workflow</h2>
+              <p style="font-size:15px;line-height:1.6;color:#5B5F66;margin:0 0 28px">Pick the process that hurts the most. One is enough.</p>
+              <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px" role="radiogroup" aria-label="Workflow area">
+                <sc-for list="{{ areas }}" as="a" hint-placeholder-count="4">
+                  <button type="button" onClick="{{ a.pick }}" aria-pressed="{{ a.on }}" style="display:flex;align-items:center;gap:14px;text-align:left;background:{{ a.bg }};border:1.5px solid {{ a.border }};border-radius:10px;padding:16px 18px;cursor:pointer;font-family:Inter,sans-serif;transition:border-color 150ms ease,background 150ms ease" style-hover="border-color:#1A6FC4">
+                    <span style="flex:none;width:20px;height:20px;border-radius:999px;border:2px solid {{ a.dotBorder }};display:flex;align-items:center;justify-content:center"><span style="width:10px;height:10px;border-radius:999px;background:{{ a.dot }}"></span></span>
+                    <span>
+                      <span style="display:block;font-size:15px;font-weight:600;color:#1C1F23">{{ a.label }}</span>
+                      <span style="display:block;font-size:13px;color:#8B939B;margin-top:2px">{{ a.hint }}</span>
+                    </span>
+                  </button>
+                </sc-for>
+              </div>
+              <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;color:#1C1F23">Describe it in a sentence or two
+                <textarea rows="3" value="{{ description }}" onChange="{{ setDescription }}" placeholder="e.g. Supplier invoices over $10k wait on one approver and pile up every quarter-end." style="background:#FFFFFF;border:1px solid #C9D1D9;border-radius:6px;font-family:Inter,sans-serif;font-size:15px;color:#1C1F23;padding:12px 14px;outline:none;resize:vertical" style-focus="border-color:#1A6FC4"></textarea>
+              </label>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ step2 }}" hint-placeholder-val="{{ false }}">
+            <div style="animation:acStepIn 250ms ease-out">
+              <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.375rem;font-weight:600;letter-spacing:-0.01em;margin:0 0 8px">The systems it runs on</h2>
+              <p style="font-size:15px;line-height:1.6;color:#5B5F66;margin:0 0 28px">Nothing gets replaced — we need to know what the agent layer will sit on.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px" role="group" aria-label="Systems in play">
+                <sc-for list="{{ systems }}" as="s" hint-placeholder-count="6">
+                  <button type="button" onClick="{{ s.toggle }}" aria-pressed="{{ s.on }}" style="background:{{ s.bg }};color:{{ s.color }};border:1.5px solid {{ s.border }};border-radius:999px;font-family:Inter,sans-serif;font-size:14px;font-weight:600;padding:10px 20px;cursor:pointer;transition:background 150ms ease,color 150ms ease,border-color 150ms ease" style-hover="border-color:#1A6FC4">{{ s.label }}</button>
+                </sc-for>
+              </div>
+              <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;color:#1C1F23">Anything else in the mix? <span style="font-weight:400;color:#8B939B">(optional)</span>
+                <input type="text" value="{{ otherSystems }}" onChange="{{ setOtherSystems }}" placeholder="Legacy tools, spreadsheets, homegrown systems…" style="background:#FFFFFF;border:1px solid #C9D1D9;border-radius:6px;font-family:Inter,sans-serif;font-size:15px;color:#1C1F23;padding:12px 14px;outline:none" style-focus="border-color:#1A6FC4">
+              </label>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ step3 }}" hint-placeholder-val="{{ false }}">
+            <div style="animation:acStepIn 250ms ease-out">
+              <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.375rem;font-weight:600;letter-spacing:-0.01em;margin:0 0 8px">You</h2>
+              <p style="font-size:15px;line-height:1.6;color:#5B5F66;margin:0 0 28px">So a real person can reply. No newsletter, no sequence — one reply.</p>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-bottom:20px">
+                <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;color:#1C1F23">Name
+                  <input type="text" required="required" value="{{ name }}" onChange="{{ setName }}" style="background:#FFFFFF;border:1px solid #C9D1D9;border-radius:6px;font-family:Inter,sans-serif;font-size:15px;color:#1C1F23;padding:12px 14px;outline:none" style-focus="border-color:#1A6FC4">
+                </label>
+                <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;color:#1C1F23">Role
+                  <input type="text" value="{{ role }}" onChange="{{ setRole }}" placeholder="e.g. VP Operations" style="background:#FFFFFF;border:1px solid #C9D1D9;border-radius:6px;font-family:Inter,sans-serif;font-size:15px;color:#1C1F23;padding:12px 14px;outline:none" style-focus="border-color:#1A6FC4">
+                </label>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px">
+                <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;color:#1C1F23">Work email
+                  <input type="email" required="required" value="{{ email }}" onChange="{{ setEmail }}" style="background:#FFFFFF;border:1px solid #C9D1D9;border-radius:6px;font-family:Inter,sans-serif;font-size:15px;color:#1C1F23;padding:12px 14px;outline:none" style-focus="border-color:#1A6FC4">
+                </label>
+                <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;color:#1C1F23">Company
+                  <input type="text" required="required" value="{{ company }}" onChange="{{ setCompany }}" style="background:#FFFFFF;border:1px solid #C9D1D9;border-radius:6px;font-family:Inter,sans-serif;font-size:15px;color:#1C1F23;padding:12px 14px;outline:none" style-focus="border-color:#1A6FC4">
+                </label>
+              </div>
+            </div>
+          </sc-if>
+
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:36px;padding-top:28px;border-top:1px solid #EEF1F4">
+            <sc-if value="{{ canBack }}" hint-placeholder-val="{{ false }}">
+              <button type="button" onClick="{{ back }}" style="background:none;border:none;padding:0;cursor:pointer;font-family:Inter,sans-serif;font-size:14px;font-weight:600;color:#8B939B" style-hover="color:#1C1F23">← Back</button>
+            </sc-if>
+            <sc-if value="{{ noBack }}" hint-placeholder-val="{{ true }}">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8B939B">~2 minutes total</span>
+            </sc-if>
+            <button type="submit" style="background:#1A6FC4;color:#FFFFFF;border:none;border-radius:6px;font-family:Inter,sans-serif;font-size:15px;font-weight:600;padding:14px 30px;cursor:pointer;transition:background 150ms ease" style-hover="background:#124E8F">{{ nextLabel }}</button>
+          </div>
+        </form>
+
+        <p style="text-align:center;font-size:13px;color:#8B939B;margin:24px 0 0">No cost, no commitment. If the workflow isn't a fit for a pilot, we'll say so plainly.</p>
+      </sc-if>
+
+      <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
+        <div role="status" style="background:#FFFFFF;border:1px solid #E4E9EF;border-top:3px solid #1A7A4A;border-radius:16px;padding:52px;box-shadow:0 8px 28px rgba(28,31,35,0.06);text-align:center;animation:acStepIn 250ms ease-out">
+          <svg width="52" height="52" viewBox="0 0 52 52" aria-hidden="true" style="margin-bottom:24px"><circle cx="26" cy="26" r="23" fill="#E7F2EC"></circle><path d="M16 26.5l6.5 6.5L36 19" stroke="#1A7A4A" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:600;letter-spacing:-0.01em;margin:0 0 12px">Request received.</h2>
+          <p style="font-size:16px;line-height:1.65;color:#5B5F66;margin:0 auto 8px;max-width:440px">Thanks, {{ name }}. A real person will reply to {{ email }} within one business day with a fit assessment for your {{ areaLabel }} workflow.</p>
+          <p style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8B939B;margin:20px 0 0">Just like our agents: confirmed, visible, and on the record.</p>
+        </div>
+      </sc-if>
+
+    </div>
+  </section>
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    step: 0,
+    done: false,
+    area: 'invoices',
+    description: '',
+    picked: {},
+    otherSystems: '',
+    name: '', role: '', email: '', company: ''
+  };
+
+  renderVals() {
+    const st = this.state;
+    const stepDefs = ['Workflow', 'Systems', 'You'];
+    const areaDefs = [
+      { key: 'invoices', label: 'Invoices & approvals', hint: 'AP/AR, exception handling, approval routing' },
+      { key: 'suppliers', label: 'Supplier & vendor operations', hint: 'Onboarding, compliance, certifications' },
+      { key: 'customer', label: 'Customer data & CRM workflows', hint: 'Follow-ups, routing, data hygiene' },
+      { key: 'other', label: 'Something else', hint: 'Describe it below' }
+    ];
+    const sysDefs = ['SAP', 'Microsoft Dynamics', 'Salesforce', 'UiPath', 'OutSystems', 'Other ERP/CRM'];
+    const areaLabel = (areaDefs.find((a) => a.key === st.area) || areaDefs[0]).label.toLowerCase();
+    return {
+      done: st.done,
+      notDone: !st.done,
+      step1: st.step === 0,
+      step2: st.step === 1,
+      step3: st.step === 2,
+      canBack: st.step > 0,
+      noBack: st.step === 0,
+      nextLabel: st.step === 2 ? 'Submit request' : 'Continue →',
+      steps: stepDefs.map((label, i) => {
+        const done = i < st.step, on = i === st.step;
+        return {
+          label: label,
+          mark: done ? '✓' : String(i + 1),
+          bg: done ? '#1A7A4A' : on ? '#1A6FC4' : '#FFFFFF',
+          color: done || on ? '#FFFFFF' : '#8B939B',
+          border: done ? '#1A7A4A' : on ? '#1A6FC4' : '#C9D1D9',
+          labelColor: on ? '#1C1F23' : '#8B939B',
+          hasBar: i < 2,
+          barColor: i < st.step ? '#1A7A4A' : '#E4E9EF'
+        };
+      }),
+      areas: areaDefs.map((a) => {
+        const on = st.area === a.key;
+        return {
+          label: a.label, hint: a.hint, on: on,
+          bg: on ? '#EAF2FB' : '#FFFFFF',
+          border: on ? '#1A6FC4' : '#E4E9EF',
+          dotBorder: on ? '#1A6FC4' : '#C9D1D9',
+          dot: on ? '#1A6FC4' : 'transparent',
+          pick: () => this.setState({ area: a.key })
+        };
+      }),
+      systems: sysDefs.map((s) => {
+        const on = !!st.picked[s];
+        return {
+          label: s, on: on,
+          bg: on ? '#1A6FC4' : '#FFFFFF',
+          color: on ? '#FFFFFF' : '#1C1F23',
+          border: on ? '#1A6FC4' : '#C9D1D9',
+          toggle: () => {
+            const p = Object.assign({}, st.picked);
+            p[s] = !p[s];
+            this.setState({ picked: p });
+          }
+        };
+      }),
+      description: st.description,
+      otherSystems: st.otherSystems,
+      name: st.name, role: st.role, email: st.email, company: st.company,
+      areaLabel: areaLabel,
+      setDescription: (e) => this.setState({ description: e.target.value }),
+      setOtherSystems: (e) => this.setState({ otherSystems: e.target.value }),
+      setName: (e) => this.setState({ name: e.target.value }),
+      setRole: (e) => this.setState({ role: e.target.value }),
+      setEmail: (e) => this.setState({ email: e.target.value }),
+      setCompany: (e) => this.setState({ company: e.target.value }),
+      back: () => this.setState({ step: Math.max(0, st.step - 1) }),
+      next: (e) => {
+        e.preventDefault();
+        if (st.step < 2) this.setState({ step: st.step + 1 });
+        else this.setState({ done: true });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

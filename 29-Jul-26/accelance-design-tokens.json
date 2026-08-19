@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "name": "Accelance Design Tokens",
+    "version": "1.0.0",
+    "source": "Figma reference stack (source of truth), cross-verified against accelance_logo.png and live accelance.io screenshots",
+    "notes": "Values marked 'proposed' are not yet confirmed by Accelance and should be reviewed before production use."
+  },
+  "color": {
+    "azureBlue": {
+      "700": "#011224",
+      "600": "#032F52",
+      "500": "#075085",
+      "400": "#0F74BD",
+      "300": "#179AF8",
+      "200": "#8FBEFE",
+      "100": "#D5E4FE",
+      "50": "#ECF0FE"
+    },
+    "deepBlue": {
+      "700": "#010E31",
+      "600": "#062667",
+      "500": "#1043A8",
+      "400": "#1C62EF",
+      "300": "#6C8BFA",
+      "200": "#A5B4FC",
+      "100": "#D9DEFE",
+      "50": "#ECF0FE"
+    },
+    "vividGreen": {
+      "700": "#011F03",
+      "600": "#02410A",
+      "500": "#066716",
+      "400": "#0C8F22",
+      "300": "#13BA2F",
+      "200": "#1BE63D",
+      "100": "#C1FFC5"
+    },
+    "amber": {
+      "700": "#1A0F00",
+      "600": "#3E2902",
+      "500": "#674706",
+      "400": "#93670D",
+      "300": "#C28915",
+      "200": "#F4AD1D",
+      "100": "#FEDCB9"
+    },
+    "charcoal": {
+      "700": "#101112",
+      "600": "#2C2D30",
+      "500": "#4C4D51",
+      "400": "#6E7075",
+      "300": "#92959A",
+      "200": "#B9BBBE",
+      "100": "#E2E3E4",
+      "50": "#FDFEFF"
+    },
+    "black": "#000000",
+    "white": "#FFFFFF",
+    "semantic": {
+      "brandPrimary": "{color.azureBlue.400}",
+      "brandSecondary": "{color.vividGreen.300}",
+      "success": { "value": "{color.vividGreen.400}", "status": "proposed" },
+      "warning": { "value": "{color.amber.300}", "status": "proposed" },
+      "danger": { "value": null, "status": "gap - no red ramp exists in source; PPTX uses #C0442A standalone" },
+      "textPrimary": "{color.charcoal.600}",
+      "textSecondary": "{color.charcoal.400}"
+    },
+    "gradient": {
+      "brand": {
+        "type": "linear",
+        "angle": "135deg",
+        "stops": ["{color.azureBlue.400} 0%", "{color.vividGreen.300} 100%"],
+        "status": "angle is a reasonable default from observed examples, not confirmed"
+      }
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "primary": "Lexend",
+      "officeSubstitute": "Arial"
+    },
+    "scale": {
+      "display1": { "useCase": "Landing page hero text", "weight": "Bold", "desktop": { "size": 76, "lineHeight": 94 }, "mobile": { "size": 32, "lineHeight": 48 } },
+      "display2": { "useCase": "Service page landing text", "weight": "Bold", "desktop": { "size": 60, "lineHeight": 72 }, "mobile": { "size": 28, "lineHeight": 36 } },
+      "heading1": { "useCase": "Value proposition within a section", "weight": "Medium", "desktop": { "size": 56, "lineHeight": 70 }, "mobile": { "size": 28, "lineHeight": 36 } },
+      "heading2": { "useCase": "Important boxes and CTA boxes", "weight": "Light", "desktop": { "size": 48, "lineHeight": 60 }, "mobile": { "size": 24, "lineHeight": 32 } },
+      "heading3": { "useCase": "Multiple headings in a single box", "weight": "Light", "desktop": { "size": 32, "lineHeight": 40 }, "mobile": { "size": 20, "lineHeight": 28 } },
+      "sectionHeading": { "useCase": "Explaining content in a section or box", "weight": "Light", "desktop": { "size": 20, "lineHeight": 32 }, "mobile": { "size": 16, "lineHeight": 24 } },
+      "subSectionHeading": { "useCase": "Sub section within a section or box", "weight": "Light", "desktop": { "size": 12, "lineHeight": 20 }, "mobile": { "size": 12, "lineHeight": 20 } },
+      "tabText": { "useCase": "Important tab text / attention-seeking heading", "weight": "Light", "desktop": { "size": 24, "lineHeight": 36 }, "mobile": { "size": 16, "lineHeight": 24 } },
+      "body1": { "useCase": "Default paragraph text following display text", "weight": "Light", "desktop": { "size": 20, "lineHeight": 32 }, "mobile": { "size": 16, "lineHeight": 24 } },
+      "body2": { "useCase": "Default body for paragraphs following Heading 3", "weight": "Light", "desktop": { "size": 16, "lineHeight": 24 }, "mobile": { "size": 12, "lineHeight": 20 } },
+      "body3": { "useCase": "Highlighting important text in body", "weight": "Medium", "desktop": { "size": 16, "lineHeight": 24 }, "mobile": { "size": 12, "lineHeight": 20 } },
+      "button1": { "useCase": "Main CTAs", "weight": "Light", "desktop": { "size": 20, "lineHeight": 32 }, "mobile": { "size": 20, "lineHeight": 32 } },
+      "button2": { "useCase": "Secondary CTAs", "weight": "Medium", "desktop": { "size": 16, "lineHeight": 24 }, "mobile": { "size": 10, "lineHeight": 16 } }
+    }
+  },
+  "spacing": {
+    "space1": { "useCase": "Main sectional spacing", "desktop": 64, "tablet": null, "mobile": 32 },
+    "space2": { "useCase": "Section elements spacing", "desktop": 48, "tablet": null, "mobile": 24 },
+    "space3": { "useCase": "Sub section elements spacing", "desktop": 32, "tablet": null, "mobile": 16 },
+    "space4": { "useCase": "Heading & paragraph spacing", "desktop": 24, "tablet": null, "mobile": 12 },
+    "space5": { "useCase": "Paragraph spacing", "desktop": 16, "tablet": null, "mobile": 8 },
+    "space6": { "useCase": "Other small spacing", "desktop": 8, "tablet": null, "mobile": 4 },
+    "padding": {
+      "section": { "desktop": 64, "mobile": 32 },
+      "box": { "desktop": 48, "mobile": 24 },
+      "tiles": { "desktop": 32, "mobile": 16 },
+      "cards": { "desktop": 24, "mobile": 12, "note": "source file labeled this 'Pad 3' identically to tiles - possible typo, flagged" }
+    },
+    "grid": {
+      "desktop": { "columns": 12, "margin": 48, "gutter": 8 },
+      "tablet": { "columns": 8, "margin": 32, "gutter": 8 },
+      "mobile": { "columns": 4, "margin": 32, "gutter": 8 },
+      "note": "source diagram had ambiguous double-gutter labeling; interpreted the value constant across all breakpoints (8px) as true gutter"
+    }
+  },
+  "shadow": {
+    "box": {
+      "desktop": { "x": 0, "y": 4, "blur": 4, "spread": 0, "color": "#000000", "opacity": 0.25 },
+      "mobile": { "x": 0, "y": 2, "blur": 2, "spread": 0, "color": "#000000", "opacity": 0.25 }
+    },
+    "sectional": {
+      "value": { "x": -5, "y": -1, "blur": 15, "spread": 0, "color": "#000000", "opacity": 0.25 }
+    }
+  },
+  "radius": {
+    "box": { "desktop": 24, "mobile": 16 },
+    "button": { "desktop": 12, "mobile": 8 }
+  },
+  "logo": {
+    "file": "accelance_logo.png",
+    "color": "{color.azureBlue.400}",
+    "taglineStatus": "retired - do not use 'accelerating digital performance' in any new asset",
+    "clearSpace": null,
+    "minSize": null,
+    "reversedLockup": null
+  }
+}

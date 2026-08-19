@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:#1C1F23;background:#FFFFFF}
+a{color:#1A6FC4;text-decoration:none}
+a:hover{color:#124E8F}
+@media (prefers-reduced-motion: reduce){*{animation-duration:1ms !important;transition-duration:1ms !important}}
+</style>
+</helmet>
+
+<dc-import name="SiteNav" active="resources" hint-size="100%,72px"></dc-import>
+<div style="height:72px" aria-hidden="true"></div>
+
+<main data-screen-label="Documentation">
+
+  <section style="background:#FFFFFF;border-bottom:1px solid #EEF1F4">
+    <div style="max-width:1280px;margin:0 auto;padding:56px 24px">
+      <div style="max-width:760px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#1A6FC4;margin-bottom:16px">Documentation</div>
+        <h1 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,3.4vw,2.6rem);font-weight:600;letter-spacing:-0.01em;line-height:1.15;margin:0 0 18px">How the governed-agent architecture works</h1>
+        <p style="font-size:1.06rem;line-height:1.6;color:#5B5F66;margin:0">Written for the people who evaluate, integrate, and operate — not the people who pitch.</p>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Docs / Body" style="background:#FFFFFF">
+    <div style="max-width:1280px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:260px minmax(0,1fr);gap:56px;align-items:start">
+
+      <nav aria-label="Documentation sections" style="position:sticky;top:96px;padding:40px 0;border-right:1px solid #EEF1F4;display:flex;flex-direction:column;gap:4px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8B939B;margin-bottom:10px">Contents</span>
+        <sc-for list="{{ toc }}" as="t" hint-placeholder-count="4">
+          <button onClick="{{ t.go }}" style="text-align:left;background:{{ t.bg }};border:none;border-left:2px solid {{ t.rail }};padding:9px 14px;cursor:pointer;font-family:Inter,sans-serif;font-size:14px;font-weight:{{ t.weight }};color:{{ t.color }};transition:color 150ms ease" style-hover="color:#1A6FC4">{{ t.label }}</button>
+        </sc-for>
+      </nav>
+
+      <div style="padding:40px 0 96px;max-width:760px">
+        <div id="doc-model">
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.65rem;font-weight:600;letter-spacing:-0.01em;margin:0 0 16px">1 · The governance model</h2>
+          <p style="font-size:16px;line-height:1.7;color:#3A4147;margin:0 0 16px">Every action an Accelance agent can take is classified into one of three tiers at design time. The tier is a property of the <em>action type</em>, not of the individual run — an agent cannot promote its own action to a lower-friction tier.</p>
+          <div style="background:#1C1F23;border-radius:10px;padding:24px 26px;margin:0 0 20px;overflow-x:auto">
+            <pre style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.7;color:#D5DBE1"><code>action:
+  type: reassign_invoice_approver
+  tier: review_required        # autonomous | review_required | mandatory_approval
+  approvers: [ap-ops-leads]
+  audit: always                # not configurable
+  reversible: true</code></pre>
+          </div>
+          <p style="font-size:16px;line-height:1.7;color:#3A4147;margin:0 0 48px">The <code style="font-family:'IBM Plex Mono',monospace;font-size:14px;background:#F2F5F8;border-radius:4px;padding:2px 6px">audit: always</code> line is the architectural invariant: there is no configuration in which an action executes without writing to the trail.</p>
+        </div>
+
+        <div id="doc-card">
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.65rem;font-weight:600;letter-spacing:-0.01em;margin:0 0 16px">2 · The confirmation card</h2>
+          <p style="font-size:16px;line-height:1.7;color:#3A4147;margin:0 0 20px">Review-required and mandatory-approval actions surface to approvers as a confirmation card: the proposed action in one sentence, the agent's reasoning underneath, and an expandable audit trail. Approve and Reject are the only mutating controls.</p>
+          <div style="margin:0 0 48px">
+            <dc-import name="ConfirmCard" action="Escalate PO-2291 to manual sourcing review." reasoning="Quoted price deviates 14% from the 90-day category median." agent="procurement-watch" hint-size="100%,320px"></dc-import>
+          </div>
+        </div>
+
+        <div id="doc-integration">
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.65rem;font-weight:600;letter-spacing:-0.01em;margin:0 0 16px">3 · Integration surface</h2>
+          <p style="font-size:16px;line-height:1.7;color:#3A4147;margin:0 0 16px">Agents integrate with your systems of record through their existing interfaces — ERP and CRM APIs, event streams, and RPA connectors. The agentic layer holds no shadow copy of your data.</p>
+          <ul style="margin:0 0 48px;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.6;color:#3A4147">
+            <li><strong>Read paths</strong> — event logs and API reads; used for mining, assessment, and agent context.</li>
+            <li><strong>Propose paths</strong> — draft changes staged outside the system of record until approved.</li>
+            <li><strong>Write paths</strong> — executed only after the tier's approval condition is met; always reversible where the underlying system allows it.</li>
+          </ul>
+        </div>
+
+        <div id="doc-audit">
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.65rem;font-weight:600;letter-spacing:-0.01em;margin:0 0 16px">4 · The audit trail</h2>
+          <p style="font-size:16px;line-height:1.7;color:#3A4147;margin:0 0 16px">Each entry records the action, tier, agent identity, approver identity (where applicable), timestamps, and outcome. Entries are append-only. Rejections record the optional human-supplied reason.</p>
+          <p style="font-size:16px;line-height:1.7;color:#3A4147;margin:0">Full API reference, schemas, and sandbox access live in the <a href="DeveloperPortal.dc.html" style="font-weight:600">Developer Portal</a>.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { active: 'doc-model' };
+
+  componentDidMount() {
+    this._sc = () => {
+      const ids = ['doc-model', 'doc-card', 'doc-integration', 'doc-audit'];
+      let cur = ids[0];
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top < 160) cur = id;
+      }
+      if (cur !== this.state.active) this.setState({ active: cur });
+    };
+    window.addEventListener('scroll', this._sc, { passive: true });
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._sc);
+  }
+
+  renderVals() {
+    const items = [
+      { id: 'doc-model', label: '1 · Governance model' },
+      { id: 'doc-card', label: '2 · Confirmation card' },
+      { id: 'doc-integration', label: '3 · Integration surface' },
+      { id: 'doc-audit', label: '4 · Audit trail' }
+    ];
+    return {
+      toc: items.map((it) => {
+        const on = this.state.active === it.id;
+        return {
+          label: it.label,
+          on: on,
+          bg: 'transparent',
+          rail: on ? '#1A6FC4' : '#EEF1F4',
+          weight: on ? '600' : '400',
+          color: on ? '#1A6FC4' : '#5B5F66',
+          go: () => {
+            const el = document.getElementById(it.id);
+            if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' });
+          }
+        };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

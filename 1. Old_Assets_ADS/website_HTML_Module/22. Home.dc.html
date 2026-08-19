@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:#1C1F23;background:#FFFFFF}
+a{color:#1A6FC4;text-decoration:none}
+a:hover{color:#124E8F}
+@keyframes acRise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes acDraw{to{stroke-dashoffset:0}}
+@keyframes acFade{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion: reduce){*{animation-duration:1ms !important;transition-duration:1ms !important}}
+</style>
+</helmet>
+
+<dc-import name="SiteNav" active="home" hint-size="100%,72px"></dc-import>
+<div style="height:72px" aria-hidden="true"></div>
+
+<main data-screen-label="Home">
+
+  <!-- ============ HERO ============ -->
+  <section data-screen-label="Home / Hero" style="background:#FFFFFF">
+    <div style="max-width:1280px;margin:0 auto;padding:88px 24px 72px;display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:56px;align-items:center">
+      <div style="max-width:600px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#1A6FC4;margin-bottom:20px;animation:acRise 250ms ease-out both">Agentic AI, Accountable by Design</div>
+        <h1 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(2.4rem,4.5vw,3.5rem);font-weight:600;letter-spacing:-0.01em;line-height:1.1;margin:0 0 24px;animation:acRise 250ms ease-out 60ms both">Autonomous isn't the risk. <span style="color:#1A6FC4">Unaccountable is.</span></h1>
+        <p style="font-size:1.125rem;line-height:1.6;color:#5B5F66;margin:0 0 32px;max-width:520px;animation:acRise 250ms ease-out 120ms both">We turn ERP, CRM, and core operations into agentic systems that act — with every decision visible, approved, and reversible. Nothing is replaced. Nothing runs silently.</p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;animation:acRise 250ms ease-out 180ms both">
+          <a href="StartPilot.dc.html" style="background:#1A6FC4;color:#FFFFFF;font-size:16px;font-weight:600;padding:14px 26px;border-radius:6px;transition:background 150ms ease" style-hover="background:#124E8F;color:#FFFFFF">Start the no-cost pilot</a>
+          <a href="AgenticAI.dc.html" style="background:#FFFFFF;color:#1A6FC4;border:1px solid #1A6FC4;font-size:16px;font-weight:600;padding:13px 26px;border-radius:6px;transition:background 150ms ease" style-hover="background:#EAF2FB;color:#124E8F">Explore Agentic AI</a>
+        </div>
+      </div>
+      <div style="background:#EAF2FB;border-radius:20px;padding:32px;min-height:380px;display:flex;align-items:center;justify-content:center;animation:acFade 400ms ease-out 200ms both">
+        <svg viewBox="0 0 560 420" role="img" aria-label="Diagram of agent actions moving through a governance checkpoint: completed actions shown as solid lines, one pending action held at an amber review node" style="width:100%;height:auto;max-width:560px">
+          <path d="M84 96 C 150 110, 190 150, 234 190" fill="none" stroke="#1A6FC4" stroke-width="2" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" style="animation:acDraw 900ms ease-out 300ms forwards"></path>
+          <path d="M92 306 C 150 290, 190 260, 232 226" fill="none" stroke="#1A6FC4" stroke-width="2" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" style="animation:acDraw 900ms ease-out 420ms forwards"></path>
+          <path d="M312 206 C 370 200, 410 180, 460 132" fill="none" stroke="#1A6FC4" stroke-width="2" stroke-dasharray="6 6" opacity="0.85" pathLength="1" style="animation:acFade 600ms ease-out 1100ms both"></path>
+          <path d="M310 226 C 368 244, 412 268, 462 306" fill="none" stroke="#1A6FC4" stroke-width="2" stroke-dasharray="6 6" opacity="0.85" pathLength="1" style="animation:acFade 600ms ease-out 1200ms both"></path>
+          <g style="animation:acFade 400ms ease-out 200ms both">
+            <circle cx="72" cy="90" r="17" fill="#E7F2EC" stroke="#1A7A4A" stroke-width="2"></circle>
+            <circle cx="72" cy="90" r="7" fill="#1A7A4A"></circle>
+          </g>
+          <g style="animation:acFade 400ms ease-out 320ms both">
+            <circle cx="80" cy="312" r="17" fill="#E7F2EC" stroke="#1A7A4A" stroke-width="2"></circle>
+            <circle cx="80" cy="312" r="7" fill="#1A7A4A"></circle>
+          </g>
+          <g style="animation:acFade 500ms ease-out 800ms both">
+            <rect x="208" y="146" width="130" height="130" rx="18" fill="#FFFFFF" stroke="#B85400" stroke-width="2"></rect>
+            <circle cx="273" cy="196" r="17" fill="none" stroke="#B85400" stroke-width="2"></circle>
+            <path d="M273 179a17 17 0 0 1 0 34Z" fill="#B85400"></path>
+            <rect x="240" y="232" width="30" height="9" rx="3" fill="#1A6FC4"></rect>
+            <rect x="278" y="232" width="30" height="9" rx="3" fill="none" stroke="#1A6FC4" stroke-width="1.5"></rect>
+          </g>
+          <g style="animation:acFade 500ms ease-out 1400ms both">
+            <circle cx="478" cy="120" r="14" fill="#FFFFFF" stroke="#1C1F23" stroke-width="1.75"></circle>
+            <circle cx="480" cy="318" r="14" fill="#FFFFFF" stroke="#1C1F23" stroke-width="1.75"></circle>
+          </g>
+          <g font-family="IBM Plex Mono,monospace" font-size="11" fill="#5B5F66" style="animation:acFade 500ms ease-out 1000ms both">
+            <text x="208" y="300">awaiting approval</text>
+            <text x="46" y="128">autonomous</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRUST STRIP ============ -->
+  <section data-screen-label="Home / Trust strip" style="border-top:1px solid #EEF1F4;border-bottom:1px solid #EEF1F4;background:#FFFFFF">
+    <div style="max-width:1280px;margin:0 auto;padding:28px 24px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:20px 48px">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#8B939B">Confirmed Partners</span>
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;color:#9BA3AB;transition:color 150ms ease" style-hover="color:#1C1F23">Microsoft</span>
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;color:#9BA3AB;transition:color 150ms ease" style-hover="color:#1C1F23">SAP</span>
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;color:#9BA3AB;transition:color 150ms ease" style-hover="color:#1C1F23">UiPath</span>
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;color:#9BA3AB;transition:color 150ms ease" style-hover="color:#1C1F23">OutSystems</span>
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;color:#9BA3AB;transition:color 150ms ease" style-hover="color:#1C1F23">Salesforce</span>
+    </div>
+  </section>
+
+  <!-- ============ WHAT WE DO ============ -->
+  <section data-screen-label="Home / What we do" style="background:#FFFFFF">
+    <div style="max-width:1280px;margin:0 auto;padding:96px 24px">
+      <div data-reveal="0" style="max-width:680px;margin-bottom:56px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#1A6FC4;margin-bottom:16px">What We Do</div>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(1.9rem,3vw,2.75rem);font-weight:600;letter-spacing:-0.01em;line-height:1.15;margin:0 0 20px">We enable digital progress where it matters most</h2>
+        <p style="font-size:1.125rem;line-height:1.6;color:#5B5F66;margin:0">With a blend of strategy, technology, and execution, Accelance helps organizations digitize smarter, automate faster, and scale with impact — without discarding the systems already carrying the business.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px">
+        <a href="AgenticAI.dc.html" data-reveal="0" style="display:block;background:#FFFFFF;border:1px solid #E4E9EF;border-radius:12px;padding:32px;color:#1C1F23;transition:box-shadow 250ms ease,transform 250ms ease,border-color 250ms ease" style-hover="box-shadow:0 12px 28px rgba(28,31,35,0.08);transform:translateY(-2px);border-color:#C8D8EC;color:#1C1F23">
+          <div style="width:48px;height:48px;border-radius:10px;background:#EAF2FB;display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="#1A6FC4" stroke-width="1.75"></circle><path d="M12 3.5a8.5 8.5 0 0 1 0 17Z" fill="#1A6FC4"></path></svg>
+          </div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:1.375rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:10px">Agentic AI</div>
+          <p style="font-size:15px;line-height:1.6;color:#5B5F66;margin:0 0 18px">Governed autonomous agents for core operations, with approval built into every action.</p>
+          <span style="font-size:14px;font-weight:600;color:#1A6FC4">Learn more →</span>
+        </a>
+        <a href="Service.dc.html?s=intelligent-bpm" data-reveal="60" style="display:block;background:#FFFFFF;border:1px solid #E4E9EF;border-radius:12px;padding:32px;color:#1C1F23;transition:box-shadow 250ms ease,transform 250ms ease,border-color 250ms ease" style-hover="box-shadow:0 12px 28px rgba(28,31,35,0.08);transform:translateY(-2px);border-color:#C8D8EC;color:#1C1F23">
+          <div style="width:48px;height:48px;border-radius:10px;background:#EAF2FB;display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 8h7l3 8h8" stroke="#1A6FC4" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="3.5" cy="8" r="2" fill="#1A6FC4"></circle><circle cx="20.5" cy="16" r="2" fill="none" stroke="#1A6FC4" stroke-width="1.75"></circle></svg>
+          </div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:1.375rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:10px">Intelligent Business Process Management</div>
+          <p style="font-size:15px;line-height:1.6;color:#5B5F66;margin:0 0 18px">Self-improving workflow orchestration across your existing process layer — no rebuild required.</p>
+          <span style="font-size:14px;font-weight:600;color:#1A6FC4">Learn more →</span>
+        </a>
+        <a href="Service.dc.html?s=process-mining" data-reveal="120" style="display:block;background:#FFFFFF;border:1px solid #E4E9EF;border-radius:12px;padding:32px;color:#1C1F23;transition:box-shadow 250ms ease,transform 250ms ease,border-color 250ms ease" style-hover="box-shadow:0 12px 28px rgba(28,31,35,0.08);transform:translateY(-2px);border-color:#C8D8EC;color:#1C1F23">
+          <div style="width:48px;height:48px;border-radius:10px;background:#EAF2FB;display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2" stroke="#1A6FC4" stroke-width="1.75" stroke-linecap="round"></path></svg>
+          </div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:1.375rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:10px">Process Mining</div>
+          <p style="font-size:15px;line-height:1.6;color:#5B5F66;margin:0 0 18px">Surface hidden inefficiencies directly from the event logs your systems already generate.</p>
+          <span style="font-size:14px;font-weight:600;color:#1A6FC4">Learn more →</span>
+        </a>
+      </div>
+      <div data-reveal="0" style="margin-top:40px">
+        <a href="Services.dc.html" style="font-size:15px;font-weight:600">See all agentified services →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GOVERNANCE MOMENT ============ -->
+  <section data-screen-label="Home / Governance" style="background:#F4F8FC">
+    <div style="max-width:1280px;margin:0 auto;padding:96px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:64px;align-items:center">
+      <div data-reveal="0">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#1A6FC4;margin-bottom:16px">How it works</div>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(1.9rem,3vw,2.75rem);font-weight:600;letter-spacing:-0.01em;line-height:1.15;margin:0 0 20px">Every agent action starts as a proposal, not a decision</h2>
+        <p style="font-size:1.125rem;line-height:1.6;color:#5B5F66;margin:0 0 28px">Green means the agent acts on its own. Amber means a person reviews first. Red means it never moves without explicit sign-off. The color changes — the rule never does.</p>
+        <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:32px">
+          <div style="display:flex;align-items:center;gap:14px">
+            <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" style="flex:none"><circle cx="10" cy="10" r="8.5" fill="#1A7A4A"></circle></svg>
+            <span style="font-size:15px;color:#1C1F23"><strong style="color:#1A7A4A">Autonomous</strong> — low-risk actions the agent completes, always logged.</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px">
+            <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" style="flex:none"><circle cx="10" cy="10" r="7.5" fill="none" stroke="#B85400" stroke-width="2"></circle><path d="M10 2.5a7.5 7.5 0 0 1 0 15Z" fill="#B85400"></path></svg>
+            <span style="font-size:15px;color:#1C1F23"><strong style="color:#8A4A00">Review required</strong> — the agent proposes; a person approves first.</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px">
+            <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" style="flex:none"><path d="M10 1.5l7 2.6v4.8c0 4.2-2.9 7.8-7 9.2-4.1-1.4-7-5-7-9.2V4.1Z" fill="none" stroke="#B3362B" stroke-width="1.75"></path><path d="M7 10.2l2 2 4-4.4" stroke="#B3362B" stroke-width="1.75" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span style="font-size:15px;color:#1C1F23"><strong style="color:#B3362B">Mandatory approval</strong> — high-impact actions never move without sign-off.</span>
+          </div>
+        </div>
+        <a href="Governance.dc.html" style="background:#FFFFFF;color:#1A6FC4;border:1px solid #1A6FC4;font-size:15px;font-weight:600;padding:12px 24px;border-radius:6px;display:inline-block;transition:background 150ms ease" style-hover="background:#EAF2FB;color:#124E8F">See the governance model</a>
+      </div>
+      <div data-reveal="120">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#8B939B;margin-bottom:14px">Live component — try it</div>
+        <dc-import name="ConfirmCard" hint-size="100%,320px"></dc-import>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROOF ============ -->
+  <section data-screen-label="Home / Proof" style="background:#FFFFFF">
+    <div style="max-width:1280px;margin:0 auto;padding:96px 24px">
+      <h2 data-reveal="0" style="font-family:'Space Grotesk',sans-serif;font-size:clamp(1.9rem,3vw,2.75rem);font-weight:600;letter-spacing:-0.01em;line-height:1.15;margin:0 0 48px;max-width:640px">What this looks like in practice</h2>
+      <div data-reveal="60" style="border:1.5px dashed #C8D8EC;border-radius:12px;padding:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;align-items:center">
+        <div>
+          <div style="display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#B85400;background:#F9EFE3;border-radius:999px;padding:4px 12px;margin-bottom:20px">Client Success Story Placeholder</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:1.375rem;font-weight:600;letter-spacing:-0.01em;color:#1C1F23;margin-bottom:12px">[Role], [Sector]</div>
+          <p style="font-size:15px;line-height:1.6;color:#5B5F66;margin:0 0 20px">Case studies publish here as Situation → Approach → Outcome, anonymized by role and sector. No outcome figures appear until they're real and internally verified — that's the same accountability standard our agents are held to.</p>
+          <a href="CaseStudies.dc.html" style="font-size:15px;font-weight:600">Read the case study →</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:center;gap:16px"><span style="flex:none;width:32px;height:32px;border-radius:999px;background:#EAF2FB;color:#1A6FC4;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center">1</span><span style="font-size:15px;color:#1C1F23;font-weight:600">Situation</span><span style="flex:1;border-top:1.5px dashed #E4E9EF"></span></div>
+          <div style="display:flex;align-items:center;gap:16px"><span style="flex:none;width:32px;height:32px;border-radius:999px;background:#EAF2FB;color:#1A6FC4;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center">2</span><span style="font-size:15px;color:#1C1F23;font-weight:600">Approach</span><span style="flex:1;border-top:1.5px dashed #E4E9EF"></span></div>
+          <div style="display:flex;align-items:center;gap:16px"><span style="flex:none;width:32px;height:32px;border-radius:999px;background:#EAF2FB;color:#1A6FC4;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center">3</span><span style="font-size:15px;color:#1C1F23;font-weight:600">Outcome</span><span style="flex:1;border-top:1.5px dashed #E4E9EF"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INSIGHTS ============ -->
+  <section data-screen-label="Home / Insights" style="background:#F4F8FC">
+    <div style="max-width:1280px;margin:0 auto;padding:96px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:56px;align-items:center">
+      <div data-reveal="0">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#1A6FC4;margin-bottom:16px">Insights</div>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(1.9rem,3vw,2.75rem);font-weight:600;letter-spacing:-0.01em;line-height:1.15;margin:0 0 20px">Human-in-the-loop automation</h2>
+        <p style="font-size:1.125rem;line-height:1.6;color:#5B5F66;margin:0 0 28px">Agentic AI isn't about replacing people. It's about enabling intelligent collaboration between humans and systems.</p>
+        <a href="Insights.dc.html" style="background:#FFFFFF;color:#1A6FC4;border:1px solid #1A6FC4;font-size:15px;font-weight:600;padding:12px 24px;border-radius:6px;display:inline-block;transition:background 150ms ease" style-hover="background:#EAF2FB;color:#124E8F">Explore Insights</a>
+      </div>
+      <div data-reveal="120" style="display:flex;justify-content:center">
+        <svg viewBox="0 0 320 220" role="img" aria-label="A single idea node with lines branching into implications" style="width:100%;max-width:360px;height:auto">
+          <g stroke="#1C1F23" stroke-width="1.75" opacity="0.55">
+            <path d="M160 110 L258 42" fill="none"></path>
+            <path d="M160 110 L290 118" fill="none"></path>
+            <path d="M160 110 L240 190" fill="none"></path>
+            <path d="M160 110 L66 32" fill="none"></path>
+            <path d="M160 110 L34 128" fill="none"></path>
+            <path d="M160 110 L96 196" fill="none"></path>
+            <path d="M160 110 L206 20" fill="none"></path>
+          </g>
+          <circle cx="160" cy="110" r="12" fill="#1A6FC4"></circle>
+          <circle cx="258" cy="42" r="4" fill="none" stroke="#1C1F23" stroke-width="1.75"></circle>
+          <circle cx="290" cy="118" r="4" fill="none" stroke="#1C1F23" stroke-width="1.75"></circle>
+          <circle cx="240" cy="190" r="4" fill="none" stroke="#1C1F23" stroke-width="1.75"></circle>
+          <circle cx="66" cy="32" r="4" fill="none" stroke="#1C1F23" stroke-width="1.75"></circle>
+          <circle cx="34" cy="128" r="4" fill="none" stroke="#1C1F23" stroke-width="1.75"></circle>
+          <circle cx="96" cy="196" r="4" fill="none" stroke="#1C1F23" stroke-width="1.75"></circle>
+          <circle cx="206" cy="20" r="4" fill="none" stroke="#1C1F23" stroke-width="1.75"></circle>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLOSING CTA ============ -->
+  <section data-screen-label="Home / CTA band" style="background:#124E8F">
+    <div style="max-width:1280px;margin:0 auto;padding:88px 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px">
+      <div data-reveal="0" style="max-width:640px">
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(1.9rem,3vw,2.75rem);font-weight:600;letter-spacing:-0.01em;line-height:1.15;color:#FFFFFF;margin:0 0 16px">Start where your risk tolerance actually is.</h2>
+        <p style="font-size:1.125rem;line-height:1.6;color:#C8D8EC;margin:0">A no-cost pilot on one workflow — not your whole stack.</p>
+      </div>
+      <a data-reveal="60" href="StartPilot.dc.html" style="flex:none;background:#FFFFFF;color:#124E8F;font-size:16px;font-weight:600;padding:16px 30px;border-radius:6px;transition:background 150ms ease" style-hover="background:#EAF2FB;color:#124E8F">Start the no-cost pilot</a>
+    </div>
+  </section>
+
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const els = Array.from(document.querySelectorAll('[data-reveal]'));
+    els.forEach((el) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(8px)';
+      el.style.transition = 'opacity 400ms ease-out, transform 400ms ease-out';
+      el.style.transitionDelay = (parseInt(el.getAttribute('data-reveal'), 10) || 0) + 'ms';
+    });
+    this._io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) {
+          en.target.style.opacity = '1';
+          en.target.style.transform = 'none';
+          this._io.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    els.forEach((el) => this._io.observe(el));
+  }
+  componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+  }
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

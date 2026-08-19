@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:#1C1F23;background:#FFFFFF}
+a{color:#1A6FC4;text-decoration:none}
+a:hover{color:#124E8F}
+@media (prefers-reduced-motion: reduce){*{animation-duration:1ms !important;transition-duration:1ms !important}}
+</style>
+</helmet>
+
+<dc-import name="SiteNav" active="resources" hint-size="100%,72px"></dc-import>
+<div style="height:72px" aria-hidden="true"></div>
+
+<main data-screen-label="Insights">
+
+  <section style="background:#FFFFFF">
+    <div style="max-width:1280px;margin:0 auto;padding:32px 24px 0">
+      <nav aria-label="Breadcrumb">
+        <ol style="list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;font-size:13px;color:#8B939B">
+          <li><a href="Home.dc.html" style="color:#8B939B" style-hover="color:#1A6FC4">Home</a><span aria-hidden="true" style="margin-left:8px">/</span></li>
+          <li><a href="Resources.dc.html" style="color:#8B939B" style-hover="color:#1A6FC4">Resources</a><span aria-hidden="true" style="margin-left:8px">/</span></li>
+          <li aria-current="page" style="color:#1C1F23;font-weight:500">Insights</li>
+        </ol>
+      </nav>
+    </div>
+    <div style="max-width:1280px;margin:0 auto;padding:56px 24px 48px">
+      <div style="max-width:760px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#1A6FC4;margin-bottom:20px">Insights</div>
+        <h1 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(2.2rem,4vw,3rem);font-weight:600;letter-spacing:-0.01em;line-height:1.12;margin:0 0 24px">Thinking, not press releases.</h1>
+        <p style="font-size:1.125rem;line-height:1.6;color:#5B5F66;margin:0">Perspective on agentic AI, governance, and operational modernization — written for people who have to defend the decision internally.</p>
+      </div>
+    </div>
+    <div style="max-width:1280px;margin:0 auto;padding:0 24px 40px;display:flex;flex-wrap:wrap;gap:10px" role="group" aria-label="Filter by pillar">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
+        <button onClick="{{ f.pick }}" aria-pressed="{{ f.on }}" style="background:{{ f.bg }};color:{{ f.color }};border:1px solid {{ f.border }};border-radius:999px;font-family:Inter,sans-serif;font-size:13px;font-weight:600;padding:8px 18px;cursor:pointer;transition:background 150ms ease,color 150ms ease,border-color 150ms ease">{{ f.label }}</button>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Insights / Listing" style="background:#F4F8FC">
+    <div style="max-width:1280px;margin:0 auto;padding:72px 24px 88px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px">
+        <sc-for list="{{ articles }}" as="a" hint-placeholder-count="3">
+          <article style="background:#FFFFFF;border:1px solid #E4E9EF;border-radius:12px;padding:32px;display:flex;flex-direction:column;transition:box-shadow 250ms ease,transform 250ms ease" style-hover="box-shadow:0 12px 28px rgba(28,31,35,0.08);transform:translateY(-2px)">
+            <svg width="44" height="34" viewBox="0 0 44 34" fill="none" aria-hidden="true" style="margin-bottom:20px"><circle cx="20" cy="17" r="5" fill="#1A6FC4"></circle><path d="M25 14l12-8M25.5 18l16 1M24 21.5l9 10M15 14l-11-9M14.5 18l-13 3" stroke="#1C1F23" stroke-width="1.75" opacity="0.5"></path></svg>
+            <span style="align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#1A6FC4;background:#EAF2FB;border-radius:999px;padding:4px 12px;margin-bottom:16px">{{ a.tag }}</span>
+            <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.375rem;font-weight:600;letter-spacing:-0.01em;line-height:1.3;margin:0 0 12px">{{ a.title }}</h2>
+            <p style="font-size:15px;line-height:1.6;color:#5B5F66;margin:0 0 20px;flex:1">{{ a.dek }}</p>
+            <a href="#" style="font-size:14px;font-weight:600">Read more →</a>
+          </article>
+        </sc-for>
+      </div>
+      <div style="margin-top:32px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8B939B">Article pages publish with the first content release — headlines above are confirmed, bodies are in editing.</div>
+    </div>
+  </section>
+
+  <section data-screen-label="Insights / Subscribe" style="background:#124E8F">
+    <div style="max-width:1280px;margin:0 auto;padding:80px 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px">
+      <div style="max-width:560px">
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(1.7rem,2.6vw,2.25rem);font-weight:600;letter-spacing:-0.01em;line-height:1.2;color:#FFFFFF;margin:0 0 12px">Subscribe for new Insights</h2>
+        <p style="font-size:1.125rem;line-height:1.6;color:#C8D8EC;margin:0">One email when something new is worth your time. Never more than weekly.</p>
+      </div>
+      <sc-if value="{{ notDone }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ subscribe }}" style="display:flex;gap:10px;flex-wrap:wrap">
+          <input type="email" required="required" value="{{ email }}" onChange="{{ setEmail }}" placeholder="Work email" aria-label="Work email" style="min-width:240px;background:#FFFFFF;border:1px solid #FFFFFF;border-radius:6px;font-family:Inter,sans-serif;font-size:15px;color:#1C1F23;padding:13px 16px;outline:none" style-focus="border-color:#5B9EE0">
+          <button type="submit" style="background:#FFFFFF;color:#124E8F;border:none;border-radius:6px;font-family:Inter,sans-serif;font-size:15px;font-weight:600;padding:13px 22px;cursor:pointer;transition:background 150ms ease" style-hover="background:#EAF2FB">Subscribe</button>
+        </form>
+      </sc-if>
+      <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
+        <div role="status" style="font-size:15px;font-weight:600;color:#FFFFFF;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.3);border-radius:6px;padding:13px 22px">Subscribed. New Insights will land in your inbox.</div>
+      </sc-if>
+    </div>
+  </section>
+
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { filter: 'all', email: '', done: false };
+
+  renderVals() {
+    const all = [
+      { id: 'a1', pillar: 'governance', tag: 'Governance', title: 'Human-in-the-loop automation: where intelligent systems and human expertise work hand in hand', dek: 'Agentic AI isn\u2019t about replacing people. It\u2019s about enabling intelligent collaboration between humans and systems.' },
+      { id: 'a2', pillar: 'agentic', tag: 'Agentic execution', title: 'Emotion-driven AI behaviour: how hidden emotions shape decisions in AI systems', dek: 'What the emotional undertones in enterprise data do to autonomous decisions \u2014 and why visibility is the only honest answer.' },
+      { id: 'a3', pillar: 'augment', tag: 'Augmentation', title: 'Your ERP isn\u2019t outdated. It\u2019s just missing a brain.', dek: 'The case against rip-and-replace: why the fastest path to an acting system is the one you already run.' }
+    ];
+    const f = this.state.filter;
+    const defs = [
+      { key: 'all', label: 'All' },
+      { key: 'augment', label: 'Augmentation' },
+      { key: 'governance', label: 'Governance' },
+      { key: 'agentic', label: 'Agentic execution' }
+    ];
+    return {
+      filters: defs.map((d) => ({
+        label: d.label,
+        on: f === d.key,
+        bg: f === d.key ? '#1A6FC4' : '#FFFFFF',
+        color: f === d.key ? '#FFFFFF' : '#1C1F23',
+        border: f === d.key ? '#1A6FC4' : '#C9D1D9',
+        pick: () => this.setState({ filter: d.key })
+      })),
+      articles: f === 'all' ? all : all.filter((a) => a.pillar === f),
+      email: this.state.email,
+      done: this.state.done,
+      notDone: !this.state.done,
+      setEmail: (e) => this.setState({ email: e.target.value }),
+      subscribe: (e) => { e.preventDefault(); this.setState({ done: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

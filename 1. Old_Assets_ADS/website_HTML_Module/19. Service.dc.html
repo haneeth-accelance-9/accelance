@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:#1C1F23;background:#FFFFFF}
+a{color:#1A6FC4;text-decoration:none}
+a:hover{color:#124E8F}
+@media (prefers-reduced-motion: reduce){*{animation-duration:1ms !important;transition-duration:1ms !important}}
+</style>
+</helmet>
+
+<dc-import name="SiteNav" active="services" hint-size="100%,72px"></dc-import>
+<div style="height:72px" aria-hidden="true"></div>
+
+<main data-screen-label="Service page">
+
+  <section style="background:#FFFFFF">
+    <div style="max-width:1280px;margin:0 auto;padding:32px 24px 0">
+      <nav aria-label="Breadcrumb">
+        <ol style="list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;font-size:13px;color:#8B939B">
+          <li><a href="Home.dc.html" style="color:#8B939B" style-hover="color:#1A6FC4">Home</a><span aria-hidden="true" style="margin-left:8px">/</span></li>
+          <li><a href="Services.dc.html" style="color:#8B939B" style-hover="color:#1A6FC4">Agentified Services</a><span aria-hidden="true" style="margin-left:8px">/</span></li>
+          <li aria-current="page" style="color:#1C1F23;font-weight:500">{{ name }}</li>
+        </ol>
+      </nav>
+    </div>
+    <div style="max-width:1280px;margin:0 auto;padding:56px 24px 72px">
+      <div style="max-width:760px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#1A6FC4;margin-bottom:20px">{{ name }}</div>
+        <h1 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(2.2rem,4vw,3rem);font-weight:600;letter-spacing:-0.01em;line-height:1.12;margin:0 0 24px">{{ hook }}</h1>
+        <p style="font-size:1.125rem;line-height:1.6;color:#5B5F66;margin:0 0 32px">{{ sub }}</p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap">
+          <a href="StartPilot.dc.html" style="background:#1A6FC4;color:#FFFFFF;font-size:16px;font-weight:600;padding:14px 26px;border-radius:6px;transition:background 150ms ease" style-hover="background:#124E8F;color:#FFFFFF">Start the no-cost pilot</a>
+          <a href="Contact.dc.html" style="background:#FFFFFF;color:#1A6FC4;border:1px solid #1A6FC4;font-size:16px;font-weight:600;padding:13px 26px;border-radius:6px;transition:background 150ms ease" style-hover="background:#EAF2FB;color:#124E8F">Talk to our team</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Service / Opening" style="background:#F4F8FC">
+    <div style="max-width:1280px;margin:0 auto;padding:72px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:56px;align-items:center">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#8B939B;margin-bottom:16px">How we start</div>
+        <p style="font-family:'Space Grotesk',sans-serif;font-size:clamp(1.3rem,2vw,1.6rem);font-weight:500;letter-spacing:-0.005em;line-height:1.4;color:#1C1F23;margin:0">{{ opening }}</p>
+      </div>
+      <sc-if value="{{ hasDiagram }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#FFFFFF;border:1px solid #E4E9EF;border-radius:12px;padding:36px">
+          <svg viewBox="0 0 480 220" role="img" aria-label="Before: a process path looping back on itself. After: a single clean path moving forward" style="width:100%;height:auto">
+            <text x="16" y="48" font-family="IBM Plex Mono,monospace" font-size="12" fill="#8B939B">before</text>
+            <path d="M90 44 H 210 C 250 44, 250 84, 210 84 H 150 C 110 84, 110 44, 150 44 H 300 M 300 44 H 340" fill="none" stroke="#9BA3AB" stroke-width="2" stroke-dasharray="7 6"></path>
+            <circle cx="90" cy="44" r="6" fill="none" stroke="#9BA3AB" stroke-width="2"></circle>
+            <circle cx="340" cy="44" r="6" fill="none" stroke="#9BA3AB" stroke-width="2"></circle>
+            <text x="16" y="170" font-family="IBM Plex Mono,monospace" font-size="12" fill="#1A6FC4">after</text>
+            <path d="M90 166 H 428" fill="none" stroke="#1A6FC4" stroke-width="2.5"></path>
+            <path d="M420 158l10 8-10 8" fill="none" stroke="#1A6FC4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            <circle cx="90" cy="166" r="6" fill="#1A6FC4"></circle>
+            <circle cx="250" cy="166" r="5" fill="#FFFFFF" stroke="#1A6FC4" stroke-width="2.5"></circle>
+          </svg>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <section data-screen-label="Service / What you get" style="background:#FFFFFF">
+    <div style="max-width:1280px;margin:0 auto;padding:96px 24px">
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(1.7rem,2.6vw,2.25rem);font-weight:600;letter-spacing:-0.01em;line-height:1.2;margin:0 0 48px">What you get</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px">
+        <sc-for list="{{ bullets }}" as="b" hint-placeholder-count="3">
+          <div style="background:#FFFFFF;border:1px solid #E4E9EF;border-radius:12px;padding:32px">
+            <span style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:999px;background:#EAF2FB;color:#1A6FC4;font-family:'IBM Plex Mono',monospace;font-size:14px;margin-bottom:20px">{{ b.n }}</span>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:10px">{{ b.t }}</div>
+            <p style="font-size:15px;line-height:1.6;color:#5B5F66;margin:0">{{ b.d }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Service / Governance note" style="background:#F4F8FC">
+    <div style="max-width:1280px;margin:0 auto;padding:72px 24px">
+      <div style="background:#FFFFFF;border:1px solid #E4E9EF;border-radius:20px;padding:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px;align-items:center">
+        <div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+            <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="#1A7A4A"></circle></svg>
+            <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7" fill="none" stroke="#B85400" stroke-width="2"></circle><path d="M10 3a7 7 0 0 1 0 14Z" fill="#B85400"></path></svg>
+            <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l7 2.6v4.8c0 4.2-2.9 7.8-7 9.2-4.1-1.4-7-5-7-9.2V4.1Z" fill="none" stroke="#B3362B" stroke-width="1.75"></path></svg>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#8B939B">How governance applies here</span>
+          </div>
+          <p style="font-size:16px;line-height:1.65;color:#1C1F23;margin:0 0 20px">{{ governance }}</p>
+          <a href="Governance.dc.html" style="font-size:14px;font-weight:600">See the governance model →</a>
+        </div>
+        <sc-if value="{{ hasPartners }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#8B939B;margin-bottom:14px">Delivered with confirmed partners</div>
+            <div style="display:flex;flex-wrap:wrap;gap:10px">
+              <sc-for list="{{ partners }}" as="p" hint-placeholder-count="2">
+                <span style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:#5B5F66;border:1px solid #E4E9EF;border-radius:999px;padding:8px 18px;background:#FFFFFF">{{ p }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Service / Proof" style="background:#FFFFFF">
+    <div style="max-width:1280px;margin:0 auto;padding:88px 24px">
+      <div style="border:1.5px dashed #C8D8EC;border-radius:12px;padding:36px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px">
+        <div style="max-width:620px">
+          <div style="display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#B85400;background:#F9EFE3;border-radius:999px;padding:4px 12px;margin-bottom:16px">Client Success Story Placeholder</div>
+          <p style="font-size:15px;line-height:1.6;color:#5B5F66;margin:0">An anonymized outcome for this service — [Role], [Sector], Situation → Approach → Outcome — publishes here once real, internally verified data is supplied. Nothing is invented in the meantime.</p>
+        </div>
+        <a href="CaseStudies.dc.html" style="flex:none;font-size:15px;font-weight:600">Read the case studies →</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Service / Related + CTA" style="background:#124E8F">
+    <div style="max-width:1280px;margin:0 auto;padding:80px 24px">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px">
+        <div style="max-width:620px">
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:clamp(1.7rem,2.6vw,2.25rem);font-weight:600;letter-spacing:-0.01em;line-height:1.2;color:#FFFFFF;margin:0 0 12px">Start where your risk tolerance actually is.</h2>
+          <p style="font-size:1.125rem;line-height:1.6;color:#C8D8EC;margin:0">A no-cost pilot on one workflow — not your whole stack.</p>
+        </div>
+        <a href="StartPilot.dc.html" style="flex:none;background:#FFFFFF;color:#124E8F;font-size:16px;font-weight:600;padding:16px 30px;border-radius:6px;transition:background 150ms ease" style-hover="background:#EAF2FB;color:#124E8F">Start the no-cost pilot</a>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,0.2);margin-top:48px;padding-top:24px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#8FB4DC">Related services</span>
+        <sc-for list="{{ related }}" as="r" hint-placeholder-count="2">
+          <a href="{{ r.href }}" style="color:#FFFFFF;font-size:14px;font-weight:600;border:1px solid rgba(255,255,255,0.35);border-radius:999px;padding:8px 18px;transition:background 150ms ease" style-hover="background:rgba(255,255,255,0.12);color:#FFFFFF">{{ r.label }}</a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<dc-import name="SiteFooter" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { svc: null };
+
+  componentDidMount() {
+    const slug = new URLSearchParams(window.location.search).get('s') || 'process-assessments';
+    import('./services-data.js').then((m) => {
+      const svc = m.SERVICES[slug] || m.SERVICES['process-assessments'];
+      this.setState({ svc: svc });
+      document.title = svc.name + ' — accelance';
+    });
+  }
+
+  renderVals() {
+    const s = this.state.svc || {};
+    const bullets = (s.bullets || []).map((b, i) => ({ n: String(i + 1).padStart(2, '0'), t: b.t, d: b.d }));
+    return {
+      name: s.name,
+      hook: s.hook,
+      sub: s.sub,
+      opening: s.opening,
+      bullets: bullets,
+      governance: s.governance,
+      partners: s.partners || [],
+      hasPartners: !!(s.partners && s.partners.length),
+      hasDiagram: !!s.hasDiagram,
+      related: s.related || []
+    };
+  }
+}
+</script>
+</body>
+</html>
